@@ -1,0 +1,63 @@
+#navbar {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.logo ::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 96px;
+    width: 100%;
+    height: 5px;
+    background: #e7ebee;
+}
+
+.links-nav ::before {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 100px;
+    width: 196px;
+    height: 2.5px;
+    background: #e7ebee;
+    transform: rotate(90deg);
+}
+
+.links-nav ::after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    right: 30px;
+    width: 196px;
+    height: 2.5px;
+    background: #e7ebee;
+    transform: rotate(90deg);
+}
+
+
+.logo img {
+    width: 150px;
+}
+
+.links-nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.home-button {
+    width: 100px;
+    height: 30px;
+    
+    color: #b5babd;
+    align-self: center;
+    text-align: center;
+}
+
+.home-icon {
+    width: 100%;
+    height: 100%;
+}
