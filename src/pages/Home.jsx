@@ -8,7 +8,7 @@ const Home = () => {
         <>
             <div className="links-home">
                 <div>
-                    <h2>Gestão de Funcionários</h2>
+                    <h2 className="title-home">Gestão de Funcionários</h2>
                 </div>
                 <button>
                     <Link to='/meus-funcionarios' className="links-content">Meus Funcionários</Link>
