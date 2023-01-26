@@ -1,0 +1,109 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    margin: 50px;
+    max-width: 500px;
+    height: 50vh;
+    margin: 10vh auto;
+}
+
+.form p {
+    font-size: 15px;
+    margin-left: 15px;
+    color: gray;
+    font-weight: 500;
+}
+
+.form h2 {
+    color: #388cc8;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+label {
+    visibility: hidden;
+    height: 0.1px;
+    width: 0.1px;
+}
+
+input {
+    padding: 10px;
+    background: #e4e6e7;
+    border: #e4e6e7;
+    border-radius: 10px;
+    font-size: 17px;
+    height: 45px;
+}
+
+.form-contact-1{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.form-contact-1-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+
+.form-contact-1-column input {
+    width: 300px;    
+    margin-top: 15px;
+}
+
+.form-contact-1-column img {
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+}
+
+/* contact 2 */
+
+
+.form-contact-2{
+    display: flex;
+    justify-content: space-around;
+}
+
+.form-contact-2-column{
+   width: 100%;
+   display: flex;
+}
+
+.form-contact-2-column-phone{
+    width: 100%;
+    margin-bottom: 20px;
+ }
+
+ .form-button {
+    display: flex;
+    justify-content: space-between;
+ }
+
+ .form-button button{
+    background: #388cc8;
+    color: #fff;
+    border-radius: 50px;
+    border-color: #388cc8;
+    width: 150px;
+    font-size: 15px;
+    font-weight: 700;
+    margin-top: 20px;
+ }
+
+ .form-employee {
+    display: flex;
+    flex-direction: column;
+ }
+
+ .form-employee p {
+    margin-bottom: 20px;
+ }
+
+ .form-employee h2 {
+    margin-bottom: 40px;
+ }
+

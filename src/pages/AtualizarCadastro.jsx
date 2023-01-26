@@ -1,12 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import InfoContato from "../components/forms/InfoContato";
 
-const AtualizarCadastro = () => {
+const AtualizarFuncionario = () => {
     return (
         <div>
-            
+            <InfoContato />
         </div>
     )
 }
 
-export default AtualizarCadastro
+export default AtualizarFuncionario

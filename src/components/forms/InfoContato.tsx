@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import imgProfile  from '../../assets/profile.png'
 
 import './InfoContato.css'
 
@@ -49,24 +50,35 @@ const InfoContato = () => {
         screen === 1; 
 
     return (
-        <div>
+        <div className="form">
             {screen === 0 && (
                 <>
-                    <label htmlFor = "name">Nome</label>
-                    <input value = {data.name}
-                    onChange = {(e) => setData((prevState) => ({
-                        ...prevState,
-                        name: e.target.value
-                    }))
-                    } type="text" id="name" name="name"/>
+                    <h2>Informações de Contato</h2>
+                    <div className="form-contact-1">
+                        <div className="form-contact-1-column">
+                            <label htmlFor = "name">Nome</label>
+                            <input value = {data.name}
+                            onChange = {(e) => setData((prevState) => ({
+                                ...prevState,
+                                name: e.target.value
+                            }))
+                            } type="text" placeholder="Nome" id="name" name="name"/>
+                            <p>ex: João José</p>
 
-                    <label htmlFor = "genre">Sexo</label>
-                    <input value = {data.genre} 
-                    onChange = {(e) => setData((prevState) => ({
-                        ...prevState,
-                        genre: e.target.value
-                    }))
-                    } type="text" id="genre" name="genre"/>
+                            <label htmlFor = "genre">Sexo</label>
+                            <input value = {data.genre} 
+                            onChange = {(e) => setData((prevState) => ({
+                                ...prevState,
+                                genre: e.target.value
+                            }))
+                            } type="text" placeholder="Sexo" id="genre" name="genre"/>
+                            <p>ex: Masculino</p>
+                        </div>
+                        <div className="form-contact-1-column">
+                            <label htmlFor = "photo">Foto de Perfil</label>
+                            <img src= {imgProfile} alt="" />
+                        </div>
+                    </div>
 
                     <label htmlFor = "address">Endereço</label>
                     <input value = {data.address}
@@ -74,70 +86,87 @@ const InfoContato = () => {
                         ...prevState,
                         address: e.target.value
                     }))
-                    } type="text" id="address" name="address"/>
+                    } type="text" placeholder="Endereço" id="address" name="address"/>
+                    <p>ex: Rua do Brasil, 999 - Brasilia - DF - 00000 000</p>
 
-                    <label htmlFor = "phone">Telefone</label>
-                    <input value = {data.phone} 
-                    onChange = {(e) => setData((prevState) => ({
-                        ...prevState,
-                        phone: e.target.value
-                    }))
-                    } 
-                    type="tel" id="phone" name="phone"/>
-
-                    <label htmlFor = "photo">Foto de Perfil</label>
-                    <input type="image" id="photo" name="photo"/>
-
-                    <label htmlFor = "date">Data de aniversário</label>
-                    <input value = {data.date}
-                    onChange = {(e) => setData((prevState) => ({
-                        ...prevState,
-                        date: e.target.value
-                    }))
-                    }  type="date" id="date" name="date"/>
+                    <div className="form-contact-2">
+                        <div className="form-contact-2-column">
+                            <div className="form-contact-2-column-phone">
+                                <label htmlFor = "phone">Telefone</label>
+                                <input value = {data.phone} 
+                                onChange = {(e) => setData((prevState) => ({
+                                    ...prevState,
+                                    phone: e.target.value
+                                }))
+                                } 
+                                type="tel" placeholder="Telefone" id="phone" name="phone"/>
+                                    
+                                <p>ex: (00) 0 0000-0000</p>
+                            </div>
+                            
+                            <div>
+                              <label htmlFor = "date">Data de aniversário</label>
+                              <input value = {data.date}
+                              onChange = {(e) => setData((prevState) => ({
+                                  ...prevState,
+                                  date: e.target.value
+                             }))
+                            }  type="text" placeholder="Data de aniversário" id="date" name="date"/>
+                             <p>ex: 10/01/1980</p>
+                            </div>                            
+                        </div>
+                    </div>
                 </>
             )}
 
             {screen === 1 && (
-                <>
-                    <label htmlFor = "position">Cargo</label>
-                    <input value = {data.position}
-                    onChange = {(e) => setData((prevState) => ({
-                        ...prevState,
-                        position: e.target.value
-                    }))
-                    }  type="text" id="position" name="position"/>
+                <>  
+                    <div className="form-employee">
+                        <h2>Informações do Funcionário</h2>
+                        <label htmlFor = "position">Cargo</label>
+                        <input value = {data.position}
+                        onChange = {(e) => setData((prevState) => ({
+                            ...prevState,
+                            position: e.target.value
+                        }))
+                        }  type="text" placeholder="Cargo" id="position" name="position"/>
+                        <p>ex: Gerente</p>
 
-                    <label htmlFor = "admission">Data de adimissão</label>
-                    <input value = {data.admission}
-                    onChange = {(e) => setData((prevState) => ({
-                        ...prevState,
-                        admission: e.target.value
-                    }))
-                    }  type="date" id="admission" name="admission"/>
+                        <label htmlFor = "admission">Data de adimissão</label>
+                        <input value = {data.admission}
+                        onChange = {(e) => setData((prevState) => ({
+                            ...prevState,
+                            admission: e.target.value
+                        }))
+                        }  type="text" placeholder="Data de admissão" id="admission" name="admission"/>
+                        <p>ex: 10/01/1980</p>
 
-                    <label htmlFor = "sector">Setor</label>
-                    <input value = {data.sector} 
-                    onChange = {(e) => setData((prevState) => ({
-                        ...prevState,
-                        sector: e.target.value
-                    }))
-                    } type="text" id="sector" name="sector"/>
 
-                    <label htmlFor = "salary">Salário</label>
-                    <input value = {data.salary}
-                    onChange = {(e) => setData((prevState) => ({
-                        ...prevState,
-                        salary: e.target.value
-                    }))
-                    }  type="number" id="salary" name="salary"/>
+                        <label htmlFor = "sector">Setor</label>
+                        <input value = {data.sector} 
+                        onChange = {(e) => setData((prevState) => ({
+                            ...prevState,
+                            sector: e.target.value
+                        }))
+                        } type="text" placeholder="Setor" id="sector" name="sector"/>
+                        <p>ex: Vendas</p>
+
+                        <label htmlFor = "salary">Salário</label>
+                        <input value = {data.salary}
+                        onChange = {(e) => setData((prevState) => ({
+                            ...prevState,
+                            salary: e.target.value
+                        }))
+                        }  type="number" placeholder="Salário" id="salary" name="salary"/>
+                        <p>ex: 3.500,00</p>
+                    </div>
                 </>
             )}
 
-            <div>
-                <button onClick={handleNavigateToContatoPrevius}>Página Anterior</button>
-                {isReadyToSubmit ? <button onClick={handleSubmit}>Submeter Dados</button> : 
-                <button onClick={handleNavigateToContatoNext}>Próxima Página</button> }   
+            <div className="form-button">
+                <button onClick={handleNavigateToContatoPrevius}>Anterior</button>
+                {isReadyToSubmit ? <button onClick={handleSubmit}>Enviar</button> : 
+                <button onClick={handleNavigateToContatoNext}>Próxima</button> }   
             </div>
 
             {isSubmitted && (JSON.stringify(data))}
