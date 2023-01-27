@@ -1,14 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 // @ts-ignore
-import imgMarcaTaugor from '../assets/marca-taugor.png'
+import imgMarcaTaugor from '../../assets/marca-taugor.png'
 import { AiFillHome } from "react-icons/ai";
 
 import './Header.css'
 
 const Header = () => {
     return (
-        <nav className="navbar navbar-expand-lg bg-body-tertiary">
+        <nav className="navbar navbar-expand-lg">
             <div className="container-fluid">
                 <div className="logo">
                     <Link to='/'>

@@ -1,8 +1,8 @@
 import React from "react";
 // @ts-ignore
-import imgProfile  from '../assets/profile.png';
+import imgProfile  from '../../assets/profile.png';
 
-import './InfoContato.css'
+import './FormFuncionario.css'
 
 const InfoContato = (props) => {
     const [screen, setScreen] = React.useState<number>(0);

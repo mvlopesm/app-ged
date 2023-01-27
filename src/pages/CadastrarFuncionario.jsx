@@ -1,10 +1,10 @@
 import React from "react";
-import InfoContato from "../components/InfoContato";
+import FormFuncionario from "../components/FormFuncionario/FormFuncionario";
 
 const CadastrarFuncionario = () => {
     return (
         <div>
-            <InfoContato textButton = "Cadastrar"/>
+            <FormFuncionario textButton = "Cadastrar"/>
         </div>
     )
 }

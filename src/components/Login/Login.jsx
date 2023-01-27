@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 // @ts-ignore
-import imgMarcaTaugor from '../assets/marca-taugor.png'
+import imgMarcaTaugor from '../../assets/marca-taugor.png'
 
-import '../styles/Login.css'
+import './Login.css'
 
 
 const Login = () => {
@@ -22,7 +22,7 @@ const Login = () => {
             <input type="password" className="form-control" id="floatingPassword" placeholder="Senha"/>
             <label htmlFor="floatingPassword">Senha</label>
           </div>
-          <button className="w-100 btn btn-lg btn-primary" type="submit">Acessar</button>
+          <button className="w-100 btn btn-lg btn-primary"><Link to='/meusFuncionarios' className="submitButton">Acessar</Link></button>
         </form>
       </div>
     )
