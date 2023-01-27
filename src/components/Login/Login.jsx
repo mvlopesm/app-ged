@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 // @ts-ignore
 import imgMarcaTaugor from '../../assets/marca-taugor.png'
@@ -14,18 +14,18 @@ const Login = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [sucess, setsucess] = useState ('')
+  const [success, setSuccess] = useState ('')
 
   const auth = getAuth(app)
   const LoginUsuario = () => {
 
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
-        setsucess('S')
-        alert('Login')
+        setSuccess('S')
+        
       })
       .catch((error) => {
-        setsucess('N')
+        setSuccess('N')
     })
   }
 
@@ -36,19 +36,21 @@ const Login = () => {
           <img className="mb-4" src={imgMarcaTaugor} alt=""/>
           <h1 className="h3 mb-3 fw-normal">Login</h1>
 
-          <div className="">
+          <div className="mb-3 boxSizing" >
             <input onChange={(e) => setEmail(e.target.value)} type="email" className="form-control" id="floatingInput" placeholder="Email"/>
             <label htmlFor="floatingInput">E-mail</label>
           </div>
 
-          <div className="">
+          <div className="boxSizing mb-3">
             <input onChange={(e) => setPassword(e.target.value)}type="password" className="form-control" id="floatingPassword" placeholder="Senha"/>
             <label htmlFor="floatingPassword">Senha</label>
           </div>
 
           <button onClick={LoginUsuario} className="w-100 btn btn-lg btn-primary" type="button">Acessar</button>
 
-          { sucess === 'N' ? <div className="alert alert-danger mt-3" role="alert">Email ou senha inválida</div> : null}
+          { success === 'N' ? <div className="alert alert-danger mt-3" role="alert">Email ou senha inválida</div> : null}
+
+          {success==='S' ? <Navigate to='/meusFuncionarios'/> : null}
 
           <div className="links">
               <Link to="recuperarSenha" className="mx-2">Esqueci minha senha</Link>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 // @ts-ignore
 import imgMarcaTaugor from '../assets/marca-taugor.png';
@@ -9,9 +9,10 @@ import app from "../../firebase";
 
 const CriarConta = () => {
 
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [message, setMessage] = useState ('')
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [message, setMessage] = useState ('');
+    const [success, setSuccess] = useState ('');
 
     const cadastrarUsuario = () => {
       setMessage('')
@@ -23,18 +24,18 @@ const CriarConta = () => {
       const auth = getAuth(app);
       createUserWithEmailAndPassword(auth, email, password)
         .then(() => {
-          alert('Usuário cadastrado com sucesso')
+          setSuccess('S')
         })
-        .catch((error) => {
-          setMessage(error.message)
-          if (error.message === 'Firebase: Password should be at least 6 characters (auth/weak-password).') {
+        .catch((e) => {
+          setSuccess('N')
+          if (e.message === 'Firebase: Password should be at least 6 characters (auth/weak-password).') {
             setMessage('A senha deve ter 6 caracteres ou mais')
-          } else if (error.message === 'Firebase: Error (auth/email-already-in-use).'){
+          } else if (e.message === 'Firebase: Error (auth/email-already-in-use).'){
             setMessage('E-mail já está em uso')
-          } else if (error.message ==='Firebase: Error (auth/invalid-email).') {
+          } else if (e.message ==='Firebase: Error (auth/invalid-email).') {
             setMessage('E-mail inválido')
           } else {
-            setMessage('Erro ao criar a conta: ' + error.message)
+            setMessage('Erro ao criar a conta: ' + e.message)
           }
         });
     };
@@ -47,12 +48,12 @@ const CriarConta = () => {
             <img className="mb-4" src={imgMarcaTaugor} alt=""/>
             <h1 className="h3 mb-3 fw-normal">Criar Conta</h1>
   
-            <div>
+            <div className="boxSizing">
               <input onChange={(e) => setEmail(e.target.value)} type="email" className="form-control" id="floatingInput" placeholder="Email"/>
               <label htmlFor="floatingInput">E-mail</label>
             </div>
   
-            <div>
+            <div className="boxSizing">
               <input onChange={(e) => setPassword(e.target.value)} type="password" className="form-control" id="floatingPassword" placeholder="Senha"/>
               <label htmlFor="floatingPassword">Senha</label>
             </div>
@@ -60,6 +61,8 @@ const CriarConta = () => {
             <button onClick={cadastrarUsuario} className="w-100 btn btn-lg btn-primary" type="button">Cadastrar</button>
 
             { message.length > 0 ? <div className="alert alert-danger mt-3" role="alert">{message}</div> : null}
+
+            {success==='S' ? <Navigate to='/meusFuncionarios'/> : null}
 
             <div className="links">
               <Link to="/login" className="mx-2">Já tenho uma conta</Link>

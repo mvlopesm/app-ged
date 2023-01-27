@@ -1,32 +1,53 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, Navigate } from "react-router-dom";
 
 // @ts-ignore
 import imgMarcaTaugor from '../assets/marca-taugor.png'
 
+import {getAuth, sendPasswordResetEmail} from "firebase/auth";
+import app from "../../firebase";
+
 const RecuperarSenha = () => {
 
-    const LoginUsuario = () => {
-      alert("login")
-    }
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState ('');
+  const [success, setSuccess] = useState('')
+
+  const recuperarSenha = () => {
+
+    const auth = getAuth(app)
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        setMessage('');
+        setSuccess('Email enviado com sucesso')
+      })
+      .catch ((e) => {
+        setSuccess('');
+        setMessage('Erro ao enviar o email: ' + e.message)        
+      }) 
+
+  }
   
     return (
         <div className="d-flex align-itens-center text-center form-container">
           <form className="form-signin">
   
-            <img className="mb-4" src={imgMarcaTaugor} alt=""/>
-            <h1 className="h3 mb-3 fw-normal">Recuperar Senha</h1>
+            <img className="" src={imgMarcaTaugor} alt=""/>
+            <h1 className="h3 mb-3 fw-normal " >Recuperar Senha</h1>
   
-            <div className="">
-              <input type="email" className="form-control" id="floatingInput" placeholder="Email"/>
+            <div className="boxSizing mb-2">
+              <input onChange={(e) => setEmail(e.target.value)} type="email" className="form-control" id="floatingInput" placeholder="Email"/>
               <label htmlFor="floatingInput">E-mail</label>
             </div>
   
-            <button onClick={LoginUsuario} className="w-100 btn btn-lg btn-primary" type="button"><Link to='/meusFuncionarios' className="submitButton">Enviar</Link></button>
+            <button onClick={recuperarSenha} className="w-100 btn btn-lg btn-primary " type="button">Enviar</button>
+
+            { message.length > 0 ? <div className="alert alert-danger mt-3" role="alert">{message}</div> : null}
+
+            { success.length > 0 ? <div className="alert alert-success mt-3" role="alert">{success}</div> : null}
   
             <div className="links">
-                <Link to="/login" className="mx-2">Login</Link>
-                <Link to="/login/criarConta" className="mx-3">Criar uma conta</Link>
+                <Link to="/login/criarConta">Criar uma conta</Link>
             </div>
           </form>
         </div>
