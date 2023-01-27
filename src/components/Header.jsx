@@ -8,29 +8,22 @@ import './Header.css'
 
 const Header = () => {
     return (
-        <header id='header'>
-            <div className="logo">
-                <Link to='/'>
-                    <img src={imgMarcaTaugor} alt="" />
-                </Link>
-            </div>
+        <nav className="navbar navbar-expand-lg bg-body-tertiary">
+            <div className="container-fluid">
+                <div className="logo">
+                    <Link to='/'>
+                        <img src={imgMarcaTaugor} alt="" />
+                    </Link>
+                </div>
 
-            <nav className="links-nav">
-                <div>
-                    <Link to='/meus-funcionarios'>Meus Funcionários</Link>
+                <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 </div>
-                <div>
-                    <Link to='/atualizar-cadastro'>Atualizar Cadastro</Link>
+                
+                <div className="home-button">
+                    <Link to = '/'><AiFillHome className="home-icon" /></Link>
                 </div>
-                <div>
-                    <Link to='cadastrar-funcionario'>Cadastrar Funcionário</Link>
-                </div> 
-            </nav>
-            
-            <div className="home-button">
-                <Link to = '/'><AiFillHome className="home-icon"/></Link>
             </div>
-      </header>
+      </nav>
     )
 }
 

@@ -1,10 +1,10 @@
 import React from "react";
-import { useState } from "react";
-import imgProfile  from '../../assets/profile.png'
+// @ts-ignore
+import imgProfile  from '../assets/profile.png';
 
 import './InfoContato.css'
 
-const InfoContato = () => {
+const InfoContato = (props) => {
     const [screen, setScreen] = React.useState<number>(0);
 
     const [data, setData] = React.useState({
@@ -54,8 +54,8 @@ const InfoContato = () => {
             {screen === 0 && (
                 <>
                     <h2>Informações de Contato</h2>
-                    <div className="form-contact-1">
-                        <div className="form-contact-1-column">
+                    <div className="row" >
+                        <div className="content col-lg-8">
                             <label htmlFor = "name">Nome</label>
                             <input value = {data.name}
                             onChange = {(e) => setData((prevState) => ({
@@ -64,6 +64,7 @@ const InfoContato = () => {
                             }))
                             } type="text" placeholder="Nome" id="name" name="name"/>
                             <p>ex: João José</p>
+                            
 
                             <label htmlFor = "genre">Sexo</label>
                             <input value = {data.genre} 
@@ -74,7 +75,8 @@ const InfoContato = () => {
                             } type="text" placeholder="Sexo" id="genre" name="genre"/>
                             <p>ex: Masculino</p>
                         </div>
-                        <div className="form-contact-1-column">
+                        
+                        <div className="imgPerfil col-lg-4">
                             <label htmlFor = "photo">Foto de Perfil</label>
                             <img src= {imgProfile} alt="" />
                         </div>
@@ -89,9 +91,9 @@ const InfoContato = () => {
                     } type="text" placeholder="Endereço" id="address" name="address"/>
                     <p>ex: Rua do Brasil, 999 - Brasilia - DF - 00000 000</p>
 
-                    <div className="form-contact-2">
-                        <div className="form-contact-2-column">
-                            <div className="form-contact-2-column-phone">
+                    <div>
+                        <div className="row">
+                            <div className="content col-lg-6">
                                 <label htmlFor = "phone">Telefone</label>
                                 <input value = {data.phone} 
                                 onChange = {(e) => setData((prevState) => ({
@@ -104,7 +106,7 @@ const InfoContato = () => {
                                 <p>ex: (00) 0 0000-0000</p>
                             </div>
                             
-                            <div>
+                            <div className="content col-lg-6">
                               <label htmlFor = "date">Data de aniversário</label>
                               <input value = {data.date}
                               onChange = {(e) => setData((prevState) => ({
@@ -112,7 +114,7 @@ const InfoContato = () => {
                                   date: e.target.value
                              }))
                             }  type="text" placeholder="Data de aniversário" id="date" name="date"/>
-                             <p>ex: 10/01/1980</p>
+                             <p className="cl-lg-6">ex: 10/01/1980</p>
                             </div>                            
                         </div>
                     </div>
@@ -163,10 +165,11 @@ const InfoContato = () => {
                 </>
             )}
 
-            <div className="form-button">
-                <button onClick={handleNavigateToContatoPrevius}>Anterior</button>
-                {isReadyToSubmit ? <button onClick={handleSubmit}>Enviar</button> : 
-                <button onClick={handleNavigateToContatoNext}>Próxima</button> }   
+            <div className="buttons row">
+                <button onClick={handleNavigateToContatoPrevius} className= "btn btn-lg col-lg-4" >Anterior</button>
+
+                {isReadyToSubmit ? <button className= "btn btn-lg col-lg-4" onClick={handleSubmit}>{props.textButton}</button> : 
+                <button className= "btn btn-lg col-lg-4" onClick={handleNavigateToContatoNext}>Próxima</button> }   
             </div>
 
             {isSubmitted && (JSON.stringify(data))}

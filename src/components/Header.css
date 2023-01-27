@@ -8,17 +8,9 @@
     width: 150px;
 }
 
-.links-nav {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
 .home-button {
     width: 100px;
-    height: 20px;
+    height: 30px;
     color: #b5babd;
     align-self: center;
     text-align: center;
@@ -30,33 +22,33 @@
     height: 100%;
 }
 
-.logo ::after {
+.navbar ::after {
     content: '';
     position: absolute;
     left: 0;
-    top: 80px;
+    top: 70px;
     width: 100%;
     height: 5px;
     background: #e7ebee;
 }
 
-.links-nav ::before {
+.logo ::before {
     content: '';
     position: absolute;
     top: 0px;
     left: 100px;
-    width: 165px;
+    width: 140px;
     height: 2px;
     background: #e7ebee;
     transform: rotate(90deg);
 }
 
-.links-nav ::after {
+.home-button ::before {
     content: '';
     position: absolute;
     top: 0px;
-    right: 30px;
-    width: 165px;
+    right: 50px;
+    width: 140px;
     height: 2px;
     background: #e7ebee;
     transform: rotate(90deg);
