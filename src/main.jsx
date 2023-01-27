@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import App from './App';
-import Login from './pages/Login';
+import Login from './pages/Login.jsx';
 import MeusFuncionarios from './pages/MeusFuncionario';
 import AtualizarCadastro from './pages/AtualizarCadastro';
 import CadastrarFuncionario from './pages/CadastrarFuncionario';

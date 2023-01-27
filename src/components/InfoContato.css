@@ -51,6 +51,7 @@ input {
 /*CSS Buttons*/
 .buttons {
     justify-content: space-between;
+    margin: 0;
 }
  .buttons button{
     background: #388cc8;
