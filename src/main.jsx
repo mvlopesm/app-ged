@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 
 import App from './App';
-import HomeLogin from './pages/HomeLogin.jsx';
-import MeusFuncionarios from './pages/MeusFuncionario';
+import Login from './pages/Login';
+import Home from './pages/Home';
 import AtualizarCadastro from './pages/AtualizarCadastro';
 import CadastrarFuncionario from './pages/CadastrarFuncionario';
 import RecuperarSenha from './pages/RecuperarSenha';
@@ -20,10 +20,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter>
       <Routes>
       <Route element = {<App />}>
-          <Route path='/login' element={<HomeLogin />}/>
+          <Route path='/login' element={<Login />}/>
           <Route path='/login/recuperarSenha' element={<RecuperarSenha />}/>
           <Route path='/login/criarConta' element={<CriarConta />}/>
-          <Route path='/meusFuncionarios' element={<MeusFuncionarios />}/>
+          <Route path='/' element={<Home />}/>
           <Route path='/atualizar-cadastro' element={<AtualizarCadastro />}/>
           <Route path='/cadastrar-funcionario' element={<CadastrarFuncionario />}/>
           </Route>

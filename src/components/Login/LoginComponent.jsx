@@ -3,14 +3,14 @@ import { Link, Navigate } from "react-router-dom";
 
 // @ts-ignore
 import imgMarcaTaugor from '../../assets/marca-taugor.png'
-import './Login.css'
+import './LoginComponent.css'
 
 import {getAuth, signInWithEmailAndPassword} from "firebase/auth";
 import app from "../../../firebase";
 
 
 
-const Login = () => {
+const LoginComponent = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -50,7 +50,7 @@ const Login = () => {
 
           { success === 'N' ? <div className="alert alert-danger mt-3" role="alert">Email ou senha inválida</div> : null}
 
-          {success==='S' ? <Navigate to='/meusFuncionarios'/> : null}
+          {success==='S' ? <Navigate to='/'/> : null}
 
           <div className="links">
               <Link to="recuperarSenha" className="mx-2">Esqueci minha senha</Link>
@@ -61,4 +61,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default LoginComponent
