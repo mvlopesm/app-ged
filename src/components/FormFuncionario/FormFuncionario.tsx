@@ -12,7 +12,7 @@ const InfoContato = (props) => {
         genre: '',
         address: '',
         phone: '',
-        date: '',
+        birthdayDate: '',
         position: '',
         admission: '',
         sector: '',
@@ -42,7 +42,7 @@ const InfoContato = (props) => {
         data.genre !== '' &&
         data.address !== '' &&
         data.phone !== '' &&
-        data.date !== '' &&
+        data.birthdayDate !== '' &&
         data.position !== '' &&
         data.admission !== '' &&
         data.sector !== '' &&
@@ -107,13 +107,13 @@ const InfoContato = (props) => {
                             </div>
                             
                             <div className="content col-lg-6">
-                              <label htmlFor = "date">Data de aniversário</label>
-                              <input value = {data.date}
+                              <label htmlFor = "birthdayDate">Data de aniversário</label>
+                              <input value = {data.birthdayDate}
                               onChange = {(e) => setData((prevState) => ({
                                   ...prevState,
-                                  date: e.target.value
+                                  birthdayDate: e.target.value
                              }))
-                            }  type="text" placeholder="Data de aniversário" id="date" name="date"/>
+                            }  type="text" placeholder="Data de aniversário" id="birthdayDate" name="birthdayDate"/>
                              <p className="cl-lg-6">ex: 10/01/1980</p>
                             </div>                            
                         </div>

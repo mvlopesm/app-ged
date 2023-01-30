@@ -1,0 +1,30 @@
+.rowTitle {
+    background-color: #388cc8;
+    color: #fff;
+}
+
+.icon-action {
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 20px;
+    height: 30px;
+}
+
+.red {
+    color: red;
+}
+
+.col-action {
+    width: 140px;
+}
+
+.btn-color {
+    background: #388cc8;
+    color: #fff;
+    font-weight: 600;
+}
+
+.icon-size {
+    height: 30px;
+    width: 20px;
+}
