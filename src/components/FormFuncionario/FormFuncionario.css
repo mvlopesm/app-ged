@@ -63,6 +63,10 @@ input {
     margin-top: 20px;
  }
 
+ .cancel-button{
+    margin-right: 158px;
+ }
+
  .form-employee {
     display: flex;
     flex-direction: column;

@@ -4,8 +4,8 @@ import { Link, Navigate } from "react-router-dom";
 // @ts-ignore
 import imgMarcaTaugor from '../assets/marca-taugor.png';
 
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import app from "../../firebase";
+import firebase from "../firebase.config";
+import 'firebase/auth';
 
 const CriarConta = () => {
 
@@ -21,8 +21,8 @@ const CriarConta = () => {
         setMessage('Preencha todos os campos')
         return;
       }
-      const auth = getAuth(app);
-      createUserWithEmailAndPassword(auth, email, password)
+
+      firebase.auth().createUserWithEmailAndPassword(email, password)
         .then(() => {
           setSuccess('S')
         })

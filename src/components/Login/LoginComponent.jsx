@@ -5,9 +5,8 @@ import { Link, Navigate } from "react-router-dom";
 import imgMarcaTaugor from '../../assets/marca-taugor.png'
 import './LoginComponent.css'
 
-import {getAuth, signInWithEmailAndPassword} from "firebase/auth";
-import app from "../../../firebase";
-
+import firebase from '../../firebase.config'
+import 'firebase/auth'
 
 
 const LoginComponent = () => {
@@ -16,18 +15,17 @@ const LoginComponent = () => {
   const [password, setPassword] = useState("");
   const [success, setSuccess] = useState ('')
 
-  const auth = getAuth(app)
   const LoginUsuario = () => {
-
-    signInWithEmailAndPassword(auth, email, password)
+    firebase.auth().signInWithEmailAndPassword(email, password)
       .then(() => {
         setSuccess('S')
-        
-      })
-      .catch((error) => {
+      }).catch ((e) => {
         setSuccess('N')
-    })
+        console.log(e)
+      })
   }
+ 
+  
 
   return (
       <div className="d-flex align-itens-center text-center form-container">

@@ -1,7 +1,7 @@
 import React from "react";
 import FormFuncionario from "../components/FormFuncionario/FormFuncionario";
 
-const AtualizarFuncionario = () => {
+const CadastrarFuncionario = () => {
     return (
         <div>
             <FormFuncionario textButton = "Atualizar"/>
@@ -9,4 +9,4 @@ const AtualizarFuncionario = () => {
     )
 }
 
-export default AtualizarFuncionario
+export default CadastrarFuncionario

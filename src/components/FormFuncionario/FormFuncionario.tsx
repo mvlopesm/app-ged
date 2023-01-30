@@ -1,27 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link, Navigate } from "react-router-dom";
 // @ts-ignore
 import imgProfile  from '../../assets/profile.png';
-
 import './FormFuncionario.css'
 
-const InfoContato = (props) => {
+import 'firebase/firestore'
+import firebase from "../../firebase.config";
+
+
+const FormFuncionario = (props) => {
+
+    const db = firebase.firestore();
+
     const [screen, setScreen] = React.useState<number>(0);
+    const [message, setMessage] = useState ('')
+    const [success, setSuccess] = useState ('')
 
-    const [data, setData] = React.useState({
-        name: '',
-        genre: '',
-        address: '',
-        phone: '',
-        birthdayDate: '',
-        position: '',
-        admission: '',
-        sector: '',
-        salary: '',
-    })
-
-    const [isSubmitted, setSubmitted] = React.useState(false)
-    
-
+    const [name, setName] = useState('');
+    const [genre, setGenre] = useState('');
+    const [address, setAddress] = useState('');
+    const [phone, setPhone] = useState('');
+    const [birthdayDate, setBirthdayDate] = useState('');
+    const [position, setPosition] = useState('');
+    const [admission, setAdmission] = useState('');
+    const [sector, setSector] = useState('');
+    const [salary, setSalary] = useState('');
 
     const handleNavigateToContatoPrevius = () => {
         if (screen === 0) return
@@ -34,21 +37,52 @@ const InfoContato = (props) => {
     }
 
     const handleSubmit = () => {
-        setSubmitted(true)
-    }
+        if (name !== '' &&
+        genre !== '' &&
+        address !== '' &&
+        phone !== '' &&
+        birthdayDate !== '' &&
+        position !== '' &&
+        admission !== '' &&
+        sector !== '' &&
+        salary !== '') {
+            setMessage('Informe todos os dados')
+        } else {
+            db.collection('funcionarios').add({
+                name: name,
+                genre: genre,
+                address: address,
+                phone: phone,
+                birthdayDate: birthdayDate,
+                position: position,
+                admission: admission,
+                sector: sector,
+                salary: salary,
+            }).then (() => {
+                console.log('Sucesso ao cadastrar funcionário')
+                    setMessage('')
+                    setSuccess('S')
+                }).catch((e) => {
+                    setMessage(e);
+                    setSuccess('N')
+                })
+            }
+        }
 
-    const isReadyToSubmit = 
-        data.name !== '' &&
-        data.genre !== '' &&
-        data.address !== '' &&
-        data.phone !== '' &&
-        data.birthdayDate !== '' &&
-        data.position !== '' &&
-        data.admission !== '' &&
-        data.sector !== '' &&
-        data.salary !== '' &&
-        screen === 1; 
-
+        
+    
+        // const isReadyToSubmit = 
+        //     name !== '' &&
+        //     genre !== '' &&
+        //     address !== '' &&
+        //     phone !== '' &&
+        //     birthdayDate !== '' &&
+        //     position !== '' &&
+        //     admission !== '' &&
+        //     sector !== '' &&
+        //     salary !== '' &&
+        //     screen === 1; 
+    
     return (
         <div className="form">
             {screen === 0 && (
@@ -57,22 +91,14 @@ const InfoContato = (props) => {
                     <div className="row" >
                         <div className="content col-lg-8">
                             <label htmlFor = "name">Nome</label>
-                            <input value = {data.name}
-                            onChange = {(e) => setData((prevState) => ({
-                                ...prevState,
-                                name: e.target.value
-                            }))
-                            } type="text" placeholder="Nome" id="name" name="name"/>
+                            <input value = {name}
+                            onChange={(e)=> {setName(e.target.value)}} type="text" placeholder="Nome" id="name" name="name"/>
                             <p>ex: João José</p>
                             
 
                             <label htmlFor = "genre">Sexo</label>
-                            <input value = {data.genre} 
-                            onChange = {(e) => setData((prevState) => ({
-                                ...prevState,
-                                genre: e.target.value
-                            }))
-                            } type="text" placeholder="Sexo" id="genre" name="genre"/>
+                            <input value = {genre} 
+                            onChange={(e)=> {setGenre(e.target.value)}} type="text" placeholder="Sexo" id="genre" name="genre"/>
                             <p>ex: Masculino</p>
                         </div>
                         
@@ -83,37 +109,25 @@ const InfoContato = (props) => {
                     </div>
 
                     <label htmlFor = "address">Endereço</label>
-                    <input value = {data.address}
-                    onChange = {(e) => setData((prevState) => ({
-                        ...prevState,
-                        address: e.target.value
-                    }))
-                    } type="text" placeholder="Endereço" id="address" name="address"/>
+                    <input value = {address}
+                    onChange={(e)=> {setAddress(e.target.value)}} type="text" placeholder="Endereço" id="address" name="address"/>
                     <p>ex: Rua do Brasil, 999 - Brasilia - DF - 00000 000</p>
 
                     <div>
                         <div className="row">
                             <div className="content col-lg-6">
                                 <label htmlFor = "phone">Telefone</label>
-                                <input value = {data.phone} 
-                                onChange = {(e) => setData((prevState) => ({
-                                    ...prevState,
-                                    phone: e.target.value
-                                }))
-                                } 
-                                type="tel" placeholder="Telefone" id="phone" name="phone"/>
+                                <input value = {phone} 
+                                onChange={(e)=> {setPhone(e.target.value)}}
+                                type="text" placeholder="Telefone" id="phone" name="phone"/>
                                     
                                 <p>ex: (00) 0 0000-0000</p>
                             </div>
                             
                             <div className="content col-lg-6">
                               <label htmlFor = "birthdayDate">Data de aniversário</label>
-                              <input value = {data.birthdayDate}
-                              onChange = {(e) => setData((prevState) => ({
-                                  ...prevState,
-                                  birthdayDate: e.target.value
-                             }))
-                            }  type="text" placeholder="Data de aniversário" id="birthdayDate" name="birthdayDate"/>
+                              <input value = {birthdayDate}
+                              onChange={(e)=> {setBirthdayDate(e.target.value)}} type="text" placeholder="Data de aniversário" id="birthdayDate" name="birthdayDate"/>
                              <p className="cl-lg-6">ex: 10/01/1980</p>
                             </div>                            
                         </div>
@@ -126,55 +140,45 @@ const InfoContato = (props) => {
                     <div className="form-employee">
                         <h2>Informações do Funcionário</h2>
                         <label htmlFor = "position">Cargo</label>
-                        <input value = {data.position}
-                        onChange = {(e) => setData((prevState) => ({
-                            ...prevState,
-                            position: e.target.value
-                        }))
-                        }  type="text" placeholder="Cargo" id="position" name="position"/>
+                        <input value = {position}
+                        onChange={(e)=> {setPosition(e.target.value)}}  type="text" placeholder="Cargo" id="position" name="position"/>
                         <p>ex: Gerente</p>
 
                         <label htmlFor = "admission">Data de adimissão</label>
-                        <input value = {data.admission}
-                        onChange = {(e) => setData((prevState) => ({
-                            ...prevState,
-                            admission: e.target.value
-                        }))
-                        }  type="text" placeholder="Data de admissão" id="admission" name="admission"/>
+                        <input value = {admission}
+                        onChange={(e)=> {setAdmission(e.target.value)}} type="text" placeholder="Data de admissão" id="admission" name="admission"/>
                         <p>ex: 10/01/1980</p>
 
 
                         <label htmlFor = "sector">Setor</label>
-                        <input value = {data.sector} 
-                        onChange = {(e) => setData((prevState) => ({
-                            ...prevState,
-                            sector: e.target.value
-                        }))
-                        } type="text" placeholder="Setor" id="sector" name="sector"/>
+                        <input value = {sector} 
+                        onChange={(e)=> {setSector(e.target.value)}} type="text" placeholder="Setor" id="sector" name="sector"/>
                         <p>ex: Vendas</p>
 
                         <label htmlFor = "salary">Salário</label>
-                        <input value = {data.salary}
-                        onChange = {(e) => setData((prevState) => ({
-                            ...prevState,
-                            salary: e.target.value
-                        }))
-                        }  type="number" placeholder="Salário" id="salary" name="salary"/>
+                        <input value = {salary}
+                        onChange={(e)=> {setSalary(e.target.value)}}  type="number" placeholder="Salário" id="salary" name="salary"/>
                         <p>ex: 3.500,00</p>
                     </div>
                 </>
             )}
 
             <div className="buttons row">
-                <button onClick={handleNavigateToContatoPrevius} className= "btn btn-lg col-lg-4" >Anterior</button>
+                {screen === 0 ? <div className="buttons"> 
+                    <Link to = '/'><button className= "btn btn-lg col-lg-4 cancel-button">Cancelar</button></Link>
+                    <button className= "btn btn-lg col-lg-4" onClick={handleNavigateToContatoNext}>Próxima</button></div>
+                    : <button onClick={handleNavigateToContatoPrevius} className= "btn btn-lg col-lg-4" >Anterior</button>
+                }
 
-                {isReadyToSubmit ? <button className= "btn btn-lg col-lg-4" onClick={handleSubmit}>{props.textButton}</button> : 
-                <button className= "btn btn-lg col-lg-4" onClick={handleNavigateToContatoNext}>Próxima</button> }   
+                {screen === 1? <button className= "btn btn-lg col-lg-4" onClick={handleSubmit}>{props.textButton}</button> : <div></div>}   
             </div>
 
-            {isSubmitted && (JSON.stringify(data))}
+            { message.length > 0 ? <div className="alert alert-danger mt-3" role="alert">{message}</div> : null}
+
+            {success==='S' ? <Navigate to='/'/> : null}
+
         </div>
     )
 }
 
-export default InfoContato
+export default FormFuncionario

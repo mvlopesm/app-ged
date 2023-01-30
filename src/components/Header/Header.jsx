@@ -17,6 +17,10 @@ const Header = () => {
                 </div>
 
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul className="navbar-nav">
+                        <li className="nav-item item-navigation nav-link active"><Link to = '/cadastrarFuncionario'>Novo Funcionário</Link> </li>
+                        <li className="nav-item item-navigation nav-link active"><Link to = '/login'>Sair</Link></li>
+                    </ul>
                 </div>
                 
                 <div className="home-button">

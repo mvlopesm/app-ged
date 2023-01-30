@@ -4,8 +4,8 @@ import { Link, Navigate } from "react-router-dom";
 // @ts-ignore
 import imgMarcaTaugor from '../assets/marca-taugor.png'
 
-import {getAuth, sendPasswordResetEmail} from "firebase/auth";
-import app from "../../firebase";
+import firebase from "../firebase.config";
+import 'firebase/auth';
 
 const RecuperarSenha = () => {
 
@@ -15,8 +15,7 @@ const RecuperarSenha = () => {
 
   const recuperarSenha = () => {
 
-    const auth = getAuth(app)
-    sendPasswordResetEmail(auth, email)
+    firebase.auth().sendPasswordResetEmail(email)
       .then(() => {
         setMessage('');
         setSuccess('Email enviado com sucesso')
