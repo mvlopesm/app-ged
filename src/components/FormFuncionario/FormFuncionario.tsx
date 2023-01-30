@@ -37,15 +37,15 @@ const FormFuncionario = (props) => {
     }
 
     const handleSubmit = () => {
-        if (name !== '' &&
-        genre !== '' &&
-        address !== '' &&
-        phone !== '' &&
-        birthdayDate !== '' &&
-        position !== '' &&
-        admission !== '' &&
-        sector !== '' &&
-        salary !== '') {
+        if (name.length === 0 ||
+            genre.length === 0 ||
+            address.length === 0 ||
+            phone.length === 0 ||
+            birthdayDate.length === 0 ||
+            position.length === 0 ||
+            admission.length === 0 ||
+            sector.length === 0 ||
+            salary.length === 0) {
             setMessage('Informe todos os dados')
         } else {
             db.collection('funcionarios').add({
@@ -68,20 +68,6 @@ const FormFuncionario = (props) => {
                 })
             }
         }
-
-        
-    
-        // const isReadyToSubmit = 
-        //     name !== '' &&
-        //     genre !== '' &&
-        //     address !== '' &&
-        //     phone !== '' &&
-        //     birthdayDate !== '' &&
-        //     position !== '' &&
-        //     admission !== '' &&
-        //     sector !== '' &&
-        //     salary !== '' &&
-        //     screen === 1; 
     
     return (
         <div className="form">

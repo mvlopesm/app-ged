@@ -19,7 +19,7 @@ const ListaFuncionarios = (props) => {
                     <th scope="col">Nome</th>
                     <th scope="col">Setor</th>
                     <th scope="col">Cargo</th>
-                    <th scope="col" className="col-action">Editar / Excluir</th>
+                    <th scope="col" className="col-action">Editar / Demitir </th>
                     </tr>
                 </thead>
 
