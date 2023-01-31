@@ -3,13 +3,15 @@ import React, { useEffect, useState } from "react";
 
 import '../styles/home.css'
 import { Link } from 'react-router-dom';
-import { AiOutlineSearch, AiOutlineUserAdd } from 'react-icons/ai';
+import { AiOutlineSearch, AiOutlineUserAdd, AiTwotoneFilePdf } from 'react-icons/ai';
 
 import  firebase from '../firebase.config'
 import 'firebase/firestore'
 
 import SweetAlert from 'react-bootstrap-sweetalert';
 import Header from '../components/Header/Header';
+
+import funcionariosPDF from '../Reports/Funcionarios/funcionarios.jsx'
 
 const Home = () => {
 
@@ -43,7 +45,9 @@ const Home = () => {
                                 id: doc.id,
                                 name: doc.data().name,
                                 sector: doc.data().sector,
-                                position: doc.data().position
+                                position: doc.data().position,
+                                salary: doc.data().salary,
+                                admission: doc.data().admission
                             })
                         }
                     }
@@ -61,10 +65,11 @@ const Home = () => {
             <h2 className="mt-5 mb-5">Meus Funcionários</h2>
 
             <div className='row'>
-                <div className='col-4'>
-                    <Link to='/cadastrarFuncionario'className='btn btn-color'><AiOutlineUserAdd className='icon-size'/> Cadastrar Funcionário</Link>
+                <div className='col-6'>
+                    <Link to='/cadastrarFuncionario'className='btn btn-color btn-space'><AiOutlineUserAdd className='icon-size'/> Cadastrar Funcionário</Link>
+                    <button onClick={() => funcionariosPDF(funcionarios)} className="btn btn-danger" type="button" id="button-addon2"><AiTwotoneFilePdf className='icon-size'/> Gerar PDF</button>
                 </div>
-                <div className='col -8'>
+                <div className='col-6'>
                     <div className="input-group mb-3">
                         <input onChange={(e)=> {setSearch(e.target.value)}} type="text" className="form-control" placeholder="Pesquisar Funcionário" aria-describedby="button-addon2"/>
                         <button className="btn btn-color" type="button" id="button-addon2"><AiOutlineSearch className='icon-size'/> Pesquisar</button>
