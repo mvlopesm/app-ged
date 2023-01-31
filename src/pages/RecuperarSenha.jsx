@@ -6,6 +6,7 @@ import imgMarcaTaugor from '../assets/marca-taugor.png'
 
 import firebase from "../firebase.config";
 import 'firebase/auth';
+import Header from "../components/Header/Header";
 
 const RecuperarSenha = () => {
 
@@ -28,6 +29,8 @@ const RecuperarSenha = () => {
   }
   
     return (
+        <div>
+        <Header/>
         <div className="d-flex align-itens-center text-center form-container">
           <form className="form-signin">
   
@@ -49,6 +52,7 @@ const RecuperarSenha = () => {
                 <Link to="/login/criarConta">Criar uma conta</Link>
             </div>
           </form>
+        </div>
         </div>
       )
   }

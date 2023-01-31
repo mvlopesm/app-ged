@@ -6,6 +6,7 @@ import imgMarcaTaugor from '../assets/marca-taugor.png';
 
 import firebase from "../firebase.config";
 import 'firebase/auth';
+import Header from "../components/Header/Header";
 
 const CriarConta = () => {
 
@@ -42,6 +43,8 @@ const CriarConta = () => {
 
   
     return (
+        <>
+        <Header/>
         <div className="d-flex align-itens-center text-center form-container">
           <form className="form-signin">
   
@@ -62,13 +65,14 @@ const CriarConta = () => {
 
             { message.length > 0 ? <div className="alert alert-danger mt-3" role="alert">{message}</div> : null}
 
-            {success==='S' ? <Navigate to='/meusFuncionarios'/> : null}
+            {success==='S' ? <Navigate to='/'/> : null}
 
             <div className="links">
               <Link to="/login" className="mx-2">Já tenho uma conta</Link>
             </div>
           </form>
         </div>
+        </>
       )
   }
 

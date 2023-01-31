@@ -5,6 +5,7 @@ import imgProfile  from '../assets/profile.png';
 
 import 'firebase/firestore'
 import firebase from "../firebase.config";
+import Header from "../components/Header/Header";
 
 
 const AtualizarCadastro = (props) => {
@@ -83,6 +84,8 @@ const AtualizarCadastro = (props) => {
         }
     
     return (
+        <div>
+        <Header/>
         <div className="form">
             {screen === 0 && (
                 <>
@@ -175,6 +178,7 @@ const AtualizarCadastro = (props) => {
 
             {success==='S' ? <Navigate to='/'/> : null}
 
+        </div>
         </div>
     )
 }

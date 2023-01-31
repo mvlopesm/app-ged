@@ -9,6 +9,7 @@ import  firebase from '../firebase.config'
 import 'firebase/firestore'
 
 import SweetAlert from 'react-bootstrap-sweetalert';
+import Header from '../components/Header/Header';
 
 const Home = () => {
 
@@ -54,6 +55,8 @@ const Home = () => {
     }, [search, dismiss]);
 
     return (
+        <div>
+        <Header/>
         <div className='container'>
             <h2 className="mt-5 mb-5">Meus Funcionários</h2>
 
@@ -90,6 +93,7 @@ const Home = () => {
                                     </SweetAlert> : null
             }
 
+        </div>
         </div>
     )
 }
