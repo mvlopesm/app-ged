@@ -61,6 +61,7 @@ function funcionariosPDF(funcionarios){
         footer: Rodape
     }
 
+    // @ts-ignore
     pdfMake.createPdf(docDefinition).download();
 }
 
