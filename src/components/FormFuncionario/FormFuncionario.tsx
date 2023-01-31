@@ -1,21 +1,27 @@
+//Importações React
 import React, { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
+
+//Importações Estilização
 // @ts-ignore
 import imgProfile  from '../../assets/profile.png';
 import './FormFuncionario.css'
 
+//Importações Banco de Dados
 import 'firebase/firestore'
 import firebase from "../../firebase.config";
 
 
 const FormFuncionario = (props) => {
-
+    //Iniciando FireStore
     const db = firebase.firestore();
 
+    //UseStates Renderização
     const [screen, setScreen] = React.useState<number>(0);
     const [message, setMessage] = useState ('')
     const [success, setSuccess] = useState ('')
 
+    //UseStates Variáveis
     const [name, setName] = useState('');
     const [genre, setGenre] = useState('');
     const [address, setAddress] = useState('');
@@ -26,6 +32,7 @@ const FormFuncionario = (props) => {
     const [sector, setSector] = useState('');
     const [salary, setSalary] = useState('');
 
+    //Funções Buttons com verificaçções
     const handleNavigateToContatoPrevius = () => {
         if (screen === 0) return
         setScreen(state => state - 1)
@@ -65,12 +72,14 @@ const FormFuncionario = (props) => {
                 }).catch((e) => {
                     setMessage(e);
                     setSuccess('N')
-                })
-            }
+            })
         }
-    
+    }
+
+    //Forms MultiStep
     return (
         <div className="form">
+            
             {screen === 0 && (
                 <>
                     <h2>Informações de Contato</h2>
@@ -120,7 +129,6 @@ const FormFuncionario = (props) => {
                     </div>
                 </>
             )}
-
             {screen === 1 && (
                 <>  
                     <div className="form-employee">
@@ -148,7 +156,7 @@ const FormFuncionario = (props) => {
                     </div>
                 </>
             )}
-
+            
             <div className="buttons row">
                 {screen === 0 ? <div className="buttons"> 
                     <Link to = '/'><button className= "btn btn-lg col-lg-4 cancel-button">Cancelar</button></Link>

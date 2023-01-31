@@ -1,16 +1,20 @@
+//Importações React
 import React, { useContext } from 'react';
 import { BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
+
+//Importações Estilização
+import './styles/index.css'
+
+//Importações Bando de Dados
 import { AuthContext} from './Context/auth';
 
+//Importações Components
 import Login from './pages/Login';
 import Home from './pages/Home';
 import AtualizarCadastro from './pages/AtualizarCadastro';
 import CadastrarFuncionario from './pages/CadastrarFuncionario';
 import RecuperarSenha from './pages/RecuperarSenha';
 import CriarConta from './pages/CriarConta';
-
-
-import './styles/index.css'
 
 
 const App = () => {

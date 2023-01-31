@@ -1,10 +1,14 @@
+//Importações React
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+
+//Importações Estilização
 // @ts-ignore
 import imgMarcaTaugor from '../../assets/marca-taugor.png'
 import { AiFillHome } from "react-icons/ai";
-
 import './Header.css'
+
+//Importações Banco de Dados
 import { AuthContext } from "../../Context/auth";
 
 const Header = () => {

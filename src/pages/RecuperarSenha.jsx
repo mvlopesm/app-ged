@@ -1,15 +1,20 @@
+//Importações React
 import React, { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 
+//Importações Estilização
 // @ts-ignore
 import imgMarcaTaugor from '../assets/marca-taugor.png'
+import Header from "../components/Header/Header";
 
+//Importações Banco de Dados
 import firebase from "../firebase.config";
 import 'firebase/auth';
-import Header from "../components/Header/Header";
+
 
 const RecuperarSenha = () => {
 
+  //UseStates Renderização
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState ('');
   const [success, setSuccess] = useState('')

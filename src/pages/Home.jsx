@@ -1,20 +1,24 @@
-import ListaFuncionarios from '../components/ListaFuncionarios/ListaFuncionarios'
+//Importações React
 import React, { useEffect, useState } from "react";
-
-import '../styles/home.css'
 import { Link } from 'react-router-dom';
+
+//Importações Estilização
+import Header from '../components/Header/Header';
+import '../styles/home.css'
+import SweetAlert from 'react-bootstrap-sweetalert';
 import { AiOutlineSearch, AiOutlineUserAdd, AiTwotoneFilePdf } from 'react-icons/ai';
 
+//Importações Banco de Dados
 import  firebase from '../firebase.config'
 import 'firebase/firestore'
 
-import SweetAlert from 'react-bootstrap-sweetalert';
-import Header from '../components/Header/Header';
-
+//Importações Components
 import funcionariosPDF from '../Reports/Funcionarios/funcionarios.jsx'
+import ListaFuncionarios from '../components/ListaFuncionarios/ListaFuncionarios'
 
 const Home = () => {
-
+    
+    //UseStates Renderização
     const [funcionarios, setFuncionarios] = useState([]);
     const [search, setSearch] = useState ('');
     const [dismiss, setDismiss] = useState('');

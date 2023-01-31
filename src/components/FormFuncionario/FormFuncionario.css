@@ -1,3 +1,4 @@
+/* Style Form*/
 .form {
     display: flex;
     flex-direction: column;
@@ -19,6 +20,23 @@
     text-align: center;
     margin-bottom: 40px;
 }
+
+.form-employee {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-employee p {
+    margin-bottom: 20px;
+}
+
+.form-employee h2 {
+    margin-bottom: 40px;
+}
+
+/*----------------------------*/
+
+/*Style Form-Content*/
 
 label {
     visibility: hidden;
@@ -65,18 +83,5 @@ input {
 
  .cancel-button{
     margin-right: 158px;
- }
-
- .form-employee {
-    display: flex;
-    flex-direction: column;
- }
-
- .form-employee p {
-    margin-bottom: 20px;
- }
-
- .form-employee h2 {
-    margin-bottom: 40px;
  }
 

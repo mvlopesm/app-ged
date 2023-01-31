@@ -1,13 +1,19 @@
+
+//Importações React
 import React, { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 
-import '../styles/criarConta.css'
-
-import firebase from "../firebase.config";
-import 'firebase/auth';
+//Importações Estilização (Com Material ui)
+import '../styles/criarConta.css';
 import Header from "../components/Header/Header";
 import { Avatar, Button, Grid, Paper, TextField, Typography } from "@mui/material";
 import LockIcon from '@mui/icons-material/Lock';
+
+//Importações Banco de Dados
+import firebase from "../firebase.config";
+import 'firebase/auth';
+
+
 
 const CriarConta = () => {
 

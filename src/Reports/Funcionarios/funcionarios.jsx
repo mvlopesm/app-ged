@@ -1,3 +1,6 @@
+//Arquivo para exportação de PDF
+
+//Importação do PDF Maker
 import pdfMake from 'pdfmake/build/pdfmake'
 import pdfFonts from 'pdfmake/build/vfs_fonts'
 

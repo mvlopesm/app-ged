@@ -1,3 +1,5 @@
+//Configurações para autenticação de rotas com localStorage
+
 import React, { createContext, useState } from "react";
 
 const AuthContext = createContext({})

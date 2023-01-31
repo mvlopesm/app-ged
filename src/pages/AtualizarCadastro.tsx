@@ -1,11 +1,16 @@
+//Importações React
 import React, { useEffect, useState } from "react";
-import { Link, Navigate, useParams } from "react-router-dom"
+import { Link, Navigate, useParams } from "react-router-dom";
+
+//Importações Estilização
 // @ts-ignore
 import imgProfile  from '../assets/profile.png';
+import Header from "../components/Header/Header";
 
+//Importações Banco de Dados
 import 'firebase/firestore'
 import firebase from "../firebase.config";
-import Header from "../components/Header/Header";
+
 
 
 const AtualizarCadastro = (props) => {

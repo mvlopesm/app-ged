@@ -1,9 +1,12 @@
+//Importações React
 import React from "react";
 import './ListaFuncionarios.css';
-
-import { AiFillEdit, AiTwotoneDelete } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
+//Importações Estilização
+import { AiFillEdit, AiTwotoneDelete } from "react-icons/ai";
+
+//Renderização da Lista de Funcionarios
 const ListaFuncionarios = (props) => {    
 
     return (
