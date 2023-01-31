@@ -13,6 +13,7 @@ import Header from "../components/Header/Header";
 
 
 
+
 const LoginComponent = () => {
 
 
@@ -35,11 +36,9 @@ const LoginComponent = () => {
         setSuccess('N')
       })
   }
- 
-  
 
   return (
-        <div>  
+        <div>
         <Header/>
         <div className="d-flex align-itens-center text-center form-container">
             <form className="form-signin">

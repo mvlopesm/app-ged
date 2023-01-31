@@ -64,6 +64,7 @@ const funcionariosPDF = (funcionarios) => {
         content: [details],
         footer: [reportfooter]
     }
+    // @ts-ignore
     pdfMake.createPdf(docDefinitions).download();
 }
 

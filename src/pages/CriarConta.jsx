@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 
-// @ts-ignore
-import imgMarcaTaugor from '../assets/marca-taugor.png';
+import '../styles/criarConta.css'
 
 import firebase from "../firebase.config";
 import 'firebase/auth';
 import Header from "../components/Header/Header";
+import { Avatar, Button, Grid, Paper, TextField, Typography } from "@mui/material";
+import LockIcon from '@mui/icons-material/Lock';
 
 const CriarConta = () => {
 
@@ -41,37 +42,37 @@ const CriarConta = () => {
         });
     };
 
+    const paperStyle={padding:'20px', height:'507px', width:280, margin:'30px auto'};
+
+    const avatarStyle={backgroundColor:'#388cc8', margin:'18px auto'};
+
+    const btnStyle = {margin:'15px 0'}
   
     return (
         <>
         <Header/>
-        <div className="d-flex align-itens-center text-center form-container">
-          <form className="form-signin">
-  
-            <img className="mb-4" src={imgMarcaTaugor} alt=""/>
-            <h1 className="h3 mb-3 fw-normal">Criar Conta</h1>
-  
-            <div className="boxSizing">
-              <input onChange={(e) => setEmail(e.target.value)} type="email" className="form-control" id="floatingInput" placeholder="Email"/>
-              <label htmlFor="floatingInput">E-mail</label>
-            </div>
-  
-            <div className="boxSizing">
-              <input onChange={(e) => setPassword(e.target.value)} type="password" className="form-control" id="floatingPassword" placeholder="Senha"/>
-              <label htmlFor="floatingPassword">Senha</label>
-            </div>
-  
-            <button onClick={cadastrarUsuario} className="w-100 btn btn-lg btn-primary" type="button">Cadastrar</button>
 
-            { message.length > 0 ? <div className="alert alert-danger mt-3" role="alert">{message}</div> : null}
+        <Grid>
+            <Paper elevation={10} style={paperStyle}>
+              <Grid>
+                <Avatar className="grid-centralize" style={avatarStyle}><LockIcon/></Avatar>
+                <h2 className="grid-centralize">Criar Conta</h2>
+              </Grid>
+              <TextField onChange={(e) => setEmail(e.target.value)} placeholder="Email" type="email" className="form-control" id="floatingInput"/>
+              <TextField onChange={(e) => setPassword(e.target.value)} type="password" className="form-control" id="floatingPassword" placeholder="Senha"/>
 
-            {success==='S' ? <Navigate to='/'/> : null}
+              <Button onClick={cadastrarUsuario} type='submit' color='primary' id="btn-SingUp" style={btnStyle} fullWidth>Cadastrar</Button>
 
-            <div className="links">
-              <Link to="/login" className="mx-2">Já tenho uma conta</Link>
-            </div>
-          </form>
-        </div>
+              <Typography className="grid-centralize">
+                <Link  to='/login'>Já tenho uma conta</Link>
+              </Typography>
+
+              { message.length > 0 ? <div className="alert alert-danger mt-3" role="alert">{message}</div> : null}
+
+              {success==='S' ? <Navigate to='/'/> : null}
+
+            </Paper>
+          </Grid>
         </>
       )
   }
