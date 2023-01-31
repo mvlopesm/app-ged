@@ -13,7 +13,7 @@ import  firebase from '../firebase.config'
 import 'firebase/firestore'
 
 //Importações Components
-import funcionariosPDF from '../Reports/Funcionarios/funcionarios.jsx'
+import funcionariosPDF from '../Reports/funcionarios'
 import ListaFuncionarios from '../components/ListaFuncionarios/ListaFuncionarios'
 
 const Home = () => {
@@ -64,45 +64,44 @@ const Home = () => {
 
     return (
         <div>
-        <Header/>
-        <div className='container'>
-            <h2 className="mt-5 mb-5">Meus Funcionários</h2>
+            <Header/>
+            <div className='container'>
+                <h2 className="mt-5 mb-5">Meus Funcionários</h2>
 
-            <div className='row'>
-                <div className='col-6'>
-                    <Link to='/cadastrarFuncionario'className='btn btn-color btn-space'><AiOutlineUserAdd className='icon-size'/> Cadastrar Funcionário</Link>
-                    <button onClick={() => funcionariosPDF(funcionarios)} className="btn btn-danger" type="button" id="button-addon2"><AiTwotoneFilePdf className='icon-size'/> Gerar PDF</button>
-                </div>
-                <div className='col-6'>
-                    <div className="input-group mb-3">
-                        <input onChange={(e)=> {setSearch(e.target.value)}} type="text" className="form-control" placeholder="Pesquisar Funcionário" aria-describedby="button-addon2"/>
-                        <button className="btn btn-color" type="button" id="button-addon2"><AiOutlineSearch className='icon-size'/> Pesquisar</button>
+                <div className='row'>
+                    <div className='col-6'>
+                        <Link to='/cadastrarFuncionario'className='btn btn-color btn-space'><AiOutlineUserAdd className='icon-size'/> Cadastrar Funcionário</Link>
+                        <button onClick={() => funcionariosPDF(funcionarios)} className="btn btn-danger" type="button" id="button-addon2"><AiTwotoneFilePdf className='icon-size'/> Gerar PDF</button>
+                    </div>
+                    <div className='col-6'>
+                        <div className="input-group mb-3">
+                            <input onChange={(e)=> {setSearch(e.target.value)}} type="text" className="form-control" placeholder="Pesquisar Funcionário" aria-describedby="button-addon2"/>
+                            <button className="btn btn-color" type="button" id="button-addon2"><AiOutlineSearch className='icon-size'/> Pesquisar</button>
+                        </div>
                     </div>
                 </div>
+                            
+                <ListaFuncionarios arrayFuncionarios={funcionarios} clickDismiss={dismissFuncionarioConfirmation}/>
+
+                {
+                // @ts-ignore
+                dismissConfirmation ? <SweetAlert
+                                            warning
+                                            showCancel
+                                            showCloseButton
+                                            confirmBtnText="Sim"
+                                            confirmBtnBsStyle="danger"
+                                            cancelBtnText= 'Não'
+                                            cancelBtnBsStyle='light'
+                                            title="Demissão"
+                                            onConfirm={() => dismissFuncionario(confirmationDismissId)}
+                                            onCancel={() => setDismissConfirmation(false)}
+                                            focusCancelBtn
+                                            >
+                                            Deseja demitir o funcionário ?
+                                        </SweetAlert> : null
+                }
             </div>
-                        
-            <ListaFuncionarios arrayFuncionarios={funcionarios} clickDismiss={dismissFuncionarioConfirmation}/>
-
-            {
-            // @ts-ignore
-            dismissConfirmation ? <SweetAlert
-                                        warning
-                                        showCancel
-                                        showCloseButton
-                                        confirmBtnText="Sim"
-                                        confirmBtnBsStyle="danger"
-                                        cancelBtnText= 'Não'
-                                        cancelBtnBsStyle='light'
-                                        title="Demissão"
-                                        onConfirm={() => dismissFuncionario(confirmationDismissId)}
-                                        onCancel={() => setDismissConfirmation(false)}
-                                        focusCancelBtn
-                                        >
-                                        Deseja demitir o funcionário ?
-                                    </SweetAlert> : null
-            }
-
-        </div>
         </div>
     )
 }
