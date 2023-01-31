@@ -6,10 +6,6 @@ import { Link } from "react-router-dom";
 
 const ListaFuncionarios = (props) => {    
 
-    const deleteFuncionario = (id) => {
-        alert("Usuario Exluído: " + id) 
-    }
-
     return (
         <div>
 
@@ -33,7 +29,7 @@ const ListaFuncionarios = (props) => {
                                     <td>{funcionario.position}</td>
                                     <td>
                                         <Link to={'/atualizarCadastro/' + funcionario.id}><AiFillEdit className="icon-action"/></Link>
-                                        <Link to='' onClick={() => {deleteFuncionario(funcionario.id)}}><AiTwotoneDelete className="icon-action red"/></Link>
+                                        <Link to='' onClick={() => {props.clickDismiss(funcionario.id)}}><AiTwotoneDelete className="icon-action red"/></Link>
                                     </td>
                                 </tr>
                             )

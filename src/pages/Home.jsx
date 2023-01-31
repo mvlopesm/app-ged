@@ -8,10 +8,27 @@ import { AiOutlineSearch, AiOutlineUserAdd } from 'react-icons/ai';
 import  firebase from '../firebase.config'
 import 'firebase/firestore'
 
+import SweetAlert from 'react-bootstrap-sweetalert';
+
 const Home = () => {
 
-    const [funcionarios, setFuncionarios] = useState([])
-    const [search, setSearch] = useState ('')
+    const [funcionarios, setFuncionarios] = useState([]);
+    const [search, setSearch] = useState ('');
+    const [dismiss, setDismiss] = useState('');
+    const [dismissConfirmation, setDismissConfirmation] = useState(false)
+    const [confirmationDismissId, setConfirmationDismissId] = useState('')
+
+    const dismissFuncionario = (id) => {
+        firebase.firestore().collection('funcionarios').doc(id).delete().then(() => {
+            setDismiss(id)
+            setDismissConfirmation(false)
+        })
+    }
+
+    const dismissFuncionarioConfirmation = (id) => {
+        setConfirmationDismissId(id)
+        setDismissConfirmation(true)
+    }
 
     useEffect(() => {
         let listaFunc = [];
@@ -34,7 +51,7 @@ const Home = () => {
                 setFuncionarios(listaFunc)
             })
 
-    }, [search]);
+    }, [search, dismiss]);
 
     return (
         <div className='container'>
@@ -52,7 +69,27 @@ const Home = () => {
                 </div>
             </div>
                         
-            <ListaFuncionarios arrayFuncionarios={funcionarios}/>
+            <ListaFuncionarios arrayFuncionarios={funcionarios} clickDismiss={dismissFuncionarioConfirmation}/>
+
+            {
+            // @ts-ignore
+            dismissConfirmation ? <SweetAlert
+                                        warning
+                                        showCancel
+                                        showCloseButton
+                                        confirmBtnText="Sim"
+                                        confirmBtnBsStyle="danger"
+                                        cancelBtnText= 'Não'
+                                        cancelBtnBsStyle='light'
+                                        title="Demissão"
+                                        onConfirm={() => dismissFuncionario(confirmationDismissId)}
+                                        onCancel={() => setDismissConfirmation(false)}
+                                        focusCancelBtn
+                                        >
+                                        Deseja demitir o funcionário ?
+                                    </SweetAlert> : null
+            }
+
         </div>
     )
 }

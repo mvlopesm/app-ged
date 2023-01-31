@@ -73,7 +73,6 @@ const AtualizarCadastro = (props) => {
                 sector: sector,
                 salary: salary,
             }).then (() => {
-                console.log('Sucesso ao cadastrar funcionário')
                     setMessage('')
                     setSuccess('S')
                 }).catch((e) => {
