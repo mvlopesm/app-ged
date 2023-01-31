@@ -3,10 +3,12 @@ import React, { createContext, useState } from "react";
 const AuthContext = createContext({})
 
 const AuthProvider = (props) => {
-    const [logado, setLogado] = useState(false);
+    let isLogged = localStorage.getItem("logged")
+
+    const [logged, setLogged] = useState(isLogged === "S" ? true : false);
 
     return (
-        <AuthContext.Provider value={{logado, setLogado}}>
+        <AuthContext.Provider value={{logged, setLogged}}>
             {props.children}
         </AuthContext.Provider>
     )

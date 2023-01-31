@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
-import { AuthContext, AuthProvider } from './Context/auth';
+import { AuthContext} from './Context/auth';
 
 import Login from './pages/Login';
 import Home from './pages/Home';
@@ -14,12 +14,13 @@ import './styles/index.css'
 
 
 const App = () => {
-  const {logado} = useContext(AuthContext)
-  console.log(logado)
+  // @ts-ignore
+  const {logged} = useContext(AuthContext)
+  console.log(logged)
 
   const Private = ({ children }) => {
     // @ts-ignore
-    if(!logado) {
+    if(!logged) {
       return <Navigate to='/login'/>
     } else {
       return children;
@@ -34,8 +35,8 @@ const App = () => {
           <Route path='/login/criarConta' element={<CriarConta />}/>
            
           <Route path='/' element={<Private><Home /></Private>}/>
-          <Route path='/atualizarCadastro/:id' element={<AtualizarCadastro />}/>
-          <Route path='/cadastrarFuncionario' element={<CadastrarFuncionario />}/>
+          <Route path='/atualizarCadastro/:id' element={<Private><AtualizarCadastro /></Private>}/>
+          <Route path='/cadastrarFuncionario' element={<Private><CadastrarFuncionario /></Private>}/>
       </Routes>
     </BrowserRouter>
   )

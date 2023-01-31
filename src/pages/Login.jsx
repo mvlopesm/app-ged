@@ -20,16 +20,18 @@ const LoginComponent = () => {
   const [password, setPassword] = useState("");
   const [success, setSuccess] = useState ('')
   // @ts-ignore
-  const {setLogado} = useContext(AuthContext)
+  const {setLogged} = useContext(AuthContext)
 
 
   const LoginUsuario = () => {
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then(() => {
-        setLogado(true)
+        localStorage.setItem('logged', "S")
+        setLogged(true)
         setSuccess('S')
       }).catch (() => {
-        setLogado(false)
+        localStorage.setItem('logged', "N")
+        setLogged(false)
         setSuccess('N')
       })
   }
