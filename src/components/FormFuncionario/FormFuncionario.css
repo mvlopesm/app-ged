@@ -37,6 +37,11 @@
 /*----------------------------*/
 
 /*Style Form-Content*/
+#showLabel {
+    visibility: inherit;
+    height: 20px;
+    width: 20px;
+}
 
 label {
     visibility: hidden;
@@ -83,5 +88,25 @@ input {
 
  .cancel-button{
     margin-right: 158px;
+ }
+
+ .fileButton {
+    height: 0.1px;
+    width: 0.1px;
+    display: none;
+ }
+
+ #iconUploadPhoto {
+    width: 35px;
+    height: 35px;
+    margin-top: 45px;
+    color: #388cc8;
+ }
+
+
+ #font {
+    font-size: 10px;
+    height: 20px;
+    width: 20px;
  }
 

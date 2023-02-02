@@ -6,15 +6,18 @@ import { Link, Navigate } from "react-router-dom";
 // @ts-ignore
 import imgProfile  from '../../assets/profile.png';
 import './FormFuncionario.css'
+import { BsFillArrowUpCircleFill } from 'react-icons/bs'
 
 //Importações Banco de Dados
-import 'firebase/firestore'
+import 'firebase/firestore';
 import firebase from "../../firebase.config";
+import 'firebase/storage';
 
 
 const FormFuncionario = (props) => {
     //Iniciando FireStore
     const db = firebase.firestore();
+    const storage = firebase.storage();
 
     //UseStates Renderização
     const [screen, setScreen] = React.useState<number>(0);
@@ -30,7 +33,23 @@ const FormFuncionario = (props) => {
     const [position, setPosition] = useState('');
     const [admission, setAdmission] = useState('');
     const [sector, setSector] = useState('');
-    const [salary, setSalary] = useState('');
+    const [salary, setSalary] = useState('');    
+    
+    
+    const imgHandler = (event) => {
+        var ref = firebase.storage().ref('files');
+
+        var file = event.target.files[0];
+
+        ref.child(`file${file.name}`).put(file).then(snapshot => {
+            console.log('snapshot', snapshot);
+            ref.child(`file${file.name}`).getDownloadURL().then((url) => {
+                console.log('string para download', url)
+            })
+        })
+    }
+
+   
 
     //Funções Buttons com verificaçções
     const handleNavigateToContatoPrevius = () => {
@@ -44,6 +63,9 @@ const FormFuncionario = (props) => {
     }
 
     const handleSubmit = () => {
+
+        
+
         if (name.length === 0 ||
             genre.length === 0 ||
             address.length === 0 ||
@@ -84,7 +106,7 @@ const FormFuncionario = (props) => {
                 <>
                     <h2>Informações de Contato</h2>
                     <div className="row" >
-                        <div className="content col-lg-8">
+                        <div className="content col-lg-7">
                             <label htmlFor = "name">Nome</label>
                             <input value = {name}
                             onChange={(e)=> {setName(e.target.value)}} type="text" placeholder="Nome" id="name" name="name"/>
@@ -97,16 +119,17 @@ const FormFuncionario = (props) => {
                             <p>ex: Masculino</p>
                         </div>
                         
-                        <div className="imgPerfil col-lg-4">
-                            <label htmlFor = "photo">Foto de Perfil</label>
-                            <img src= {imgProfile} alt="" />
+                        <div className="imgPerfil col-lg-5 row" >
+                            <img src= {imgProfile} alt=""/>
+                            <input className="col-2 fileButton" type="file" name="photo" id="photo" onChange={imgHandler}/>
+                            <label id="showLabel" htmlFor = "photo"><BsFillArrowUpCircleFill id="iconUploadPhoto" /></label>
                         </div>
                     </div>
 
                     <label htmlFor = "address">Endereço</label>
                     <input value = {address}
                     onChange={(e)=> {setAddress(e.target.value)}} type="text" placeholder="Endereço" id="address" name="address"/>
-                    <p>ex: Rua do Brasil, 999 - Brasilia - DF - 00000 000</p>
+                    <p>ex: Rua do Brasil, 999</p>
 
                     <div>
                         <div className="row">
@@ -121,8 +144,8 @@ const FormFuncionario = (props) => {
                             
                             <div className="content col-lg-6">
                               <label htmlFor = "birthdayDate">Data de aniversário</label>
-                              <input value = {birthdayDate}
-                              onChange={(e)=> {setBirthdayDate(e.target.value)}} type="text" placeholder="Data de aniversário" id="birthdayDate" name="birthdayDate"/>
+                              <input value = {birthdayDate} 
+                              onChange={(e)=> {setBirthdayDate(e.target.value)}} type="text" placeholder="Data de aniversário" onFocus={(e) => e.target.type = 'date'} onBlur={(e) => e.target.type = 'text'} id="birthdayDate" name="birthdayDate"/>
                              <p className="cl-lg-6">ex: 10/01/1980</p>
                             </div>                            
                         </div>
@@ -140,7 +163,7 @@ const FormFuncionario = (props) => {
 
                         <label htmlFor = "admission">Data de adimissão</label>
                         <input value = {admission}
-                        onChange={(e)=> {setAdmission(e.target.value)}} type="text" placeholder="Data de admissão" id="admission" name="admission"/>
+                        onChange={(e)=> {setAdmission(e.target.value)}} type="text" onFocus={(e) => e.target.type = 'date'} onBlur={(e) => e.target.type = 'text'} placeholder="Data de admissão" id="admission" name="admission"/>
                         <p>ex: 10/01/1980</p>
 
 
@@ -164,7 +187,7 @@ const FormFuncionario = (props) => {
                     : <button onClick={handleNavigateToContatoPrevius} className= "btn btn-lg col-lg-4" >Anterior</button>
                 }
 
-                {screen === 1? <button className= "btn btn-lg col-lg-4" onClick={handleSubmit}>{props.textButton}</button> : <div></div>}   
+                {screen === 1? <button className= "btn btn-lg col-lg-4" type="submit" onSubmit={imgHandler} onClick={handleSubmit}>{props.textButton}</button> : <div></div>}   
             </div>
 
             { message.length > 0 ? <div className="alert alert-danger mt-3" role="alert">{message}</div> : null}

@@ -69,7 +69,7 @@ function funcionariosPDF(funcionarios){
     }
 
     // @ts-ignore
-    pdfMake.createPdf(docDefinition).download();
+    pdfMake.createPdf(docDefinition).print({}, window);
 }
 
 export default funcionariosPDF;
