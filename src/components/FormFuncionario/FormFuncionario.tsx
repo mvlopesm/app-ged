@@ -27,6 +27,7 @@ const FormFuncionario = (props) => {
     //UseStates Variáveis
     const [name, setName] = useState('');
     const [genre, setGenre] = useState('');
+    const [imgURL ,setImgURL] = useState('')
     const [address, setAddress] = useState('');
     const [phone, setPhone] = useState('');
     const [birthdayDate, setBirthdayDate] = useState('');
@@ -41,10 +42,14 @@ const FormFuncionario = (props) => {
 
         var file = event.target.files[0];
 
-        ref.child(`file${file.name}`).put(file).then(snapshot => {
+        const data = new Date().valueOf()
+        console.log(data)
+
+        ref.child(`file-${file.name}-${data}`).put(file).then(snapshot => {
             console.log('snapshot', snapshot);
-            ref.child(`file${file.name}`).getDownloadURL().then((url) => {
+            ref.child(`file-${file.name}-${data}`).getDownloadURL().then((url) => {
                 console.log('string para download', url)
+                setImgURL(url)
             })
         })
     }
@@ -80,6 +85,7 @@ const FormFuncionario = (props) => {
             db.collection('funcionarios').add({
                 name: name,
                 genre: genre,
+                imgURL: imgURL,
                 address: address,
                 phone: phone,
                 birthdayDate: birthdayDate,
@@ -120,7 +126,8 @@ const FormFuncionario = (props) => {
                         </div>
                         
                         <div className="imgPerfil col-lg-5 row" >
-                            <img src= {imgProfile} alt=""/>
+                            {!imgURL && <img src= {imgProfile} alt=""/>}
+                            {imgURL && <img src={imgURL} /> }
                             <input className="col-2 fileButton" type="file" name="photo" id="photo" onChange={imgHandler}/>
                             <label id="showLabel" htmlFor = "photo"><BsFillArrowUpCircleFill id="iconUploadPhoto" /></label>
                         </div>

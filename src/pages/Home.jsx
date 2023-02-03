@@ -13,7 +13,7 @@ import  firebase from '../firebase.config'
 import 'firebase/firestore'
 
 //Importações Components
-import funcionariosPDF from '../Reports/funcionarios'
+import allEmployeedPDF from '../Reports/todosFuncionarios'
 import ListaFuncionarios from '../components/ListaFuncionarios/ListaFuncionarios'
 
 const Home = () => {
@@ -71,7 +71,7 @@ const Home = () => {
                 <div className='row'>
                     <div className='col-6'>
                         <Link to='/cadastrarFuncionario'className='btn btn-color btn-space'><AiOutlineUserAdd className='icon-size'/> Cadastrar Funcionário</Link>
-                        <button onClick={() => funcionariosPDF(funcionarios)} className="btn btn-danger" type="button" id="button-addon2"><AiTwotoneFilePdf className='icon-size'/> Gerar PDF</button>
+                        <button onClick={() => allEmployeedPDF(funcionarios)} className="btn btn-danger" type="button" id="button-addon2"><AiTwotoneFilePdf className='icon-size'/> Gerar PDF</button>
                     </div>
                     <div className='col-6'>
                         <div className="input-group mb-3">

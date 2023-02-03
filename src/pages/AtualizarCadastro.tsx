@@ -10,6 +10,7 @@ import Header from "../components/Header/Header";
 //Importações Banco de Dados
 import 'firebase/firestore'
 import firebase from "../firebase.config";
+import { AiTwotoneFilePdf } from "react-icons/ai";
 
 
 
@@ -24,6 +25,7 @@ const AtualizarCadastro = (props) => {
 
     const [name, setName] = useState('');
     const [genre, setGenre] = useState('');
+    const [imgURL ,setImgURL] = useState('');
     const [address, setAddress] = useState('');
     const [phone, setPhone] = useState('');
     const [birthdayDate, setBirthdayDate] = useState('');
@@ -33,16 +35,17 @@ const AtualizarCadastro = (props) => {
     const [salary, setSalary] = useState('');
 
     useEffect (() => {
-        firebase.firestore().collection('funcionarios').doc(id).get().then((resultado) => {
-            setName(resultado.data().name);
-            setGenre(resultado.data().genre)
-            setAddress(resultado.data().address)
-            setPhone(resultado.data().phone)
-            setBirthdayDate(resultado.data().birthdayDate)
-            setPosition(resultado.data().position)
-            setAdmission(resultado.data().admission)
-            setSector(resultado.data().sector)
-            setSalary(resultado.data().salary)
+        firebase.firestore().collection('funcionarios').doc(id).get().then((results) => {
+            setName(results.data().name)
+            setGenre(results.data().genre)
+            setImgURL(results.data().imgURL)
+            setAddress(results.data().address)
+            setPhone(results.data().phone)
+            setBirthdayDate(results.data().birthdayDate)
+            setPosition(results.data().position)
+            setAdmission(results.data().admission)
+            setSector(results.data().sector)
+            setSalary(results.data().salary)
         })
     }, [])
 
@@ -110,7 +113,8 @@ const AtualizarCadastro = (props) => {
                         
                         <div className="imgPerfil col-lg-4">
                             <label htmlFor = "photo">Foto de Perfil</label>
-                            <img src= {imgProfile} alt="" />
+                            {!imgURL && <img src= {imgProfile} alt=""/>}
+                            {imgURL && <img src={imgURL} /> }
                         </div>
                     </div>
 
@@ -177,6 +181,8 @@ const AtualizarCadastro = (props) => {
                 }
 
                 {screen === 1? <button className= "btn btn-lg col-lg-4" onClick={handleSubmit}>Atualizar</button> : <div></div>}   
+
+                <button className="btn btn-danger" type="button" id="button-addon2"><AiTwotoneFilePdf className='icon-size'/> Gerar PDF</button>
             </div>
 
             { message.length > 0 ? <div className="alert alert-danger mt-3" role="alert">{message}</div> : null}

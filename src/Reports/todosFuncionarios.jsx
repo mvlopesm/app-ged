@@ -1,6 +1,6 @@
 import pdfMake from 'pdfmake/build/pdfmake'
 
-function funcionariosPDF(funcionarios){
+function allEmployeedPDF(funcionarios){
 
     pdfMake.fonts = {
         Roboto: {
@@ -13,7 +13,7 @@ function funcionariosPDF(funcionarios){
 
     const reportTitle = [
         {
-            text: 'Funcionarios',
+            text: 'Meus Funcionarios',
             fontSize: 15,
             bold: true,
             margin: [15, 20, 0, 45] // left, top, right, bottom
@@ -69,7 +69,7 @@ function funcionariosPDF(funcionarios){
     }
 
     // @ts-ignore
-    pdfMake.createPdf(docDefinition).print({}, window);
+    pdfMake.createPdf(docDefinition).download();
 }
 
-export default funcionariosPDF;
+export default allEmployeedPDF;
