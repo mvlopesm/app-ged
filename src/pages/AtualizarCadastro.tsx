@@ -12,6 +12,8 @@ import 'firebase/firestore'
 import firebase from "../firebase.config";
 import { AiTwotoneFilePdf } from "react-icons/ai";
 
+import employeeById from '../Reports/funcionarioPorId'
+
 
 
 const AtualizarCadastro = (props) => {
@@ -20,8 +22,9 @@ const AtualizarCadastro = (props) => {
     let { id } = useParams();
 
     const [screen, setScreen] = React.useState<number>(0);
-    const [message, setMessage] = useState ('')
-    const [success, setSuccess] = useState ('')
+    const [message, setMessage] = useState ('');
+    const [success, setSuccess] = useState ('');
+    const [employeeInformation, setEmployeeInformation] = useState([]);
 
     const [name, setName] = useState('');
     const [genre, setGenre] = useState('');
@@ -33,6 +36,8 @@ const AtualizarCadastro = (props) => {
     const [admission, setAdmission] = useState('');
     const [sector, setSector] = useState('');
     const [salary, setSalary] = useState('');
+    
+    let employeeInfo = []
 
     useEffect (() => {
         firebase.firestore().collection('funcionarios').doc(id).get().then((results) => {
@@ -46,8 +51,118 @@ const AtualizarCadastro = (props) => {
             setAdmission(results.data().admission)
             setSector(results.data().sector)
             setSalary(results.data().salary)
+
+            employeeInfo.push({
+                name: results.data().name,
+                genre : results.data().genre,
+                imgURL : results.data().imgURL,
+                address : results.data().address,
+                phone : results.data().phone,
+                birthdayDate : results.data().birthdayDate,
+                position: results.data().position,
+                admission : results.data().admission,
+                sector : results.data().sector,
+                salary: results.data().salary,
+            })
         })
+        setEmployeeInformation(employeeInfo)
     }, [])
+
+    // Funções para Atualização do PDF em tempo real
+    
+    const newSetAddress = (e) => {
+        setAddress(e.target.value)
+        employeeInfo.push({
+            name: name,
+            genre : genre,
+            imgURL : imgURL,
+            address : address,
+            phone : phone,
+            birthdayDate : birthdayDate,
+            position: position,
+            admission : admission,
+            sector : sector,
+            salary: salary,
+        })
+        setEmployeeInformation(employeeInfo)
+    }
+
+    const newSetPhone = (e) => {
+       
+        {setPhone(e.target.value)}
+
+        employeeInfo.push({
+            name: name,
+            genre : genre,
+            imgURL : imgURL,
+            address : address,
+            phone : phone,
+            birthdayDate : birthdayDate,
+            position: position,
+            admission : admission,
+            sector : sector,
+            salary: salary,
+        })
+        setEmployeeInformation(employeeInfo)
+    }
+
+    const newSetPosition = (e) => {
+
+        {setPosition(e.target.value)}
+
+        employeeInfo.push({
+            name: name,
+            genre : genre,
+            imgURL : imgURL,
+            address : address,
+            phone : phone,
+            birthdayDate : birthdayDate,
+            position: position,
+            admission : admission,
+            sector : sector,
+            salary: salary,
+        })
+        setEmployeeInformation(employeeInfo)
+    }
+
+    const newSetSector = (e) => {
+        {setSector(e.target.value)}
+
+        employeeInfo.push({
+            name: name,
+            genre : genre,
+            imgURL : imgURL,
+            address : address,
+            phone : phone,
+            birthdayDate : birthdayDate,
+            position: position,
+            admission : admission,
+            sector : sector,
+            salary: salary,
+        })
+        setEmployeeInformation(employeeInfo)
+    }
+
+    const newSetSalary = (e) => {
+
+        {setSalary(e.target.value)}
+
+        employeeInfo.push({
+            name: name,
+            genre : genre,
+            imgURL : imgURL,
+            address : address,
+            phone : phone,
+            birthdayDate : birthdayDate,
+            position: position,
+            admission : admission,
+            sector : sector,
+            salary: salary,
+        })
+        setEmployeeInformation(employeeInfo)
+    }
+    
+    //Funções dos botoẽs de páginas
 
     const handleNavigateToContatoPrevius = () => {
         if (screen === 0) return
@@ -88,6 +203,26 @@ const AtualizarCadastro = (props) => {
                     setMessage(e);
                     setSuccess('N')
                 })
+
+                db.collection(`funcionario-${id}`).add({
+                    name: name,
+                    genre: genre,
+                    imgURL: imgURL,
+                    address: address,
+                    phone: phone,
+                    birthdayDate: birthdayDate,
+                    position: position,
+                    admission: admission,
+                    sector: sector,
+                    salary: salary,
+                }).then (() => {
+                    console.log('Registrado no histórico')
+                        setMessage('')
+                        setSuccess('S')
+                    }).catch((e) => {
+                        setMessage(e);
+                        setSuccess('N')
+                })
             }
         }
     
@@ -120,7 +255,7 @@ const AtualizarCadastro = (props) => {
 
                     <label htmlFor = "address">Endereço</label>
                     <input value = {address}
-                    onChange={(e)=> {setAddress(e.target.value)}} type="text" placeholder="Endereço" id="address" name="address"/>
+                    onChange={(e)=> {newSetAddress(e)}} type="text" placeholder="Endereço" id="address" name="address"/>
                     <p>ex: Rua do Brasil, 999 - Brasilia - DF - 00000 000</p>
 
                     <div>
@@ -128,7 +263,7 @@ const AtualizarCadastro = (props) => {
                             <div className="content col-lg-6">
                                 <label htmlFor = "phone">Telefone</label>
                                 <input value = {phone} 
-                                onChange={(e)=> {setPhone(e.target.value)}}
+                                onChange={(e)=> newSetPhone(e)}
                                 type="text" placeholder="Telefone" id="phone" name="phone"/>
                                     
                                 <p>ex: (00) 0 0000-0000</p>
@@ -151,7 +286,7 @@ const AtualizarCadastro = (props) => {
                         <h2>Informações do Funcionário</h2>
                         <label htmlFor = "position">Cargo</label>
                         <input value = {position}
-                        onChange={(e)=> {setPosition(e.target.value)}}  type="text" placeholder="Cargo" id="position" name="position"/>
+                        onChange={(e)=> newSetPosition(e)}  type="text" placeholder="Cargo" id="position" name="position"/>
                         <p>ex: Gerente</p>
 
                         <label htmlFor = "admission">Data de adimissão</label>
@@ -162,12 +297,12 @@ const AtualizarCadastro = (props) => {
 
                         <label htmlFor = "sector">Setor</label>
                         <input value = {sector} 
-                        onChange={(e)=> {setSector(e.target.value)}} type="text" placeholder="Setor" id="sector" name="sector"/>
+                        onChange={(e)=> newSetSector(e)} type="text" placeholder="Setor" id="sector" name="sector"/>
                         <p>ex: Vendas</p>
 
                         <label htmlFor = "salary">Salário</label>
                         <input value = {salary}
-                        onChange={(e)=> {setSalary(e.target.value)}}  type="number" placeholder="Salário" id="salary" name="salary"/>
+                        onChange={(e)=> newSetSalary(e)}  type="number" placeholder="Salário" id="salary" name="salary"/>
                         <p>ex: 3.500,00</p>
                     </div>
                 </>
@@ -182,7 +317,7 @@ const AtualizarCadastro = (props) => {
 
                 {screen === 1? <button className= "btn btn-lg col-lg-4" onClick={handleSubmit}>Atualizar</button> : <div></div>}   
 
-                <button className="btn btn-danger" type="button" id="button-addon2"><AiTwotoneFilePdf className='icon-size'/> Gerar PDF</button>
+                <button onClick={() => employeeById(employeeInformation)} className="btn btn-danger" type="button" id="button-addon2"><AiTwotoneFilePdf className='icon-size'/> Gerar PDF</button>
             </div>
 
             { message.length > 0 ? <div className="alert alert-danger mt-3" role="alert">{message}</div> : null}
