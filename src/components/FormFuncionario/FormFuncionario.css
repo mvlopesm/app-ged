@@ -67,14 +67,23 @@ input {
 .imgPerfil img {
     width: 150px;
     height: 150px;
-    border-radius: 10px;
-    margin-bottom: 30px;
+    border-radius: 10px;  
+    margin-top: -83px;
+}
+
+#imgPerfilCadastrar {
+    margin-top: -5px;
+}
+
+#imgPerfilUploaded {
+    margin-top: -10px;
 }
 
 /*CSS Buttons*/
 .buttons {
     justify-content: space-between;
     margin: 0;
+    padding: 0;
 }
  .buttons button{
     background: #388cc8;
@@ -87,7 +96,7 @@ input {
  }
 
  .cancel-button{
-    margin-right: 158px;
+    margin-right: 33%;
  }
 
  .fileButton {
@@ -109,4 +118,5 @@ input {
     height: 20px;
     width: 20px;
  }
+
 

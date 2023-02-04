@@ -126,8 +126,8 @@ const FormFuncionario = (props) => {
                         </div>
                         
                         <div className="imgPerfil col-lg-5 row" >
-                            {!imgURL && <img src= {imgProfile} alt=""/>}
-                            {imgURL && <img src={imgURL} /> }
+                            {!imgURL && <img src= {imgProfile} alt="" id="imgPerfilCadastrar"/>}
+                            {imgURL && <img src={imgURL} id="imgPerfilUploaded"/> }
                             <input className="col-2 fileButton" type="file" name="photo" id="photo" onChange={imgHandler}/>
                             <label id="showLabel" htmlFor = "photo"><BsFillArrowUpCircleFill id="iconUploadPhoto" /></label>
                         </div>

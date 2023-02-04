@@ -13,31 +13,122 @@ function employeeById(employeeInformation){
 
     const dados = employeeInformation[0]
 
-
     const reportTitle = [
         {
             text: 'Informações do Funcionário',
-            fontSize: 15,
+            color: '#388cc8',
+            fontSize: 20,
             bold: true,
             margin: [15, 20, 0, 45] // left, top, right, bottom
         }
     ];
 
     const details = [
-        {
+        {   
+            margin: [0,20,0,0],
 			style: 'tableExample',
-            widths: 400,
 			table: {
+                widths: [400],
+                align: 'center',
+                heights: [20],
 				body: [
-					[`Nome: ${dados.name}`],
-					[`Sexo: ${dados.genre}`],
-                    [`Endereço: ${dados.address}`],
-                    [`Telefone: ${dados.phone}`],
-                    [`Data de Nascimento: ${dados.birthdayDate}`],
-                    [`Cargo: ${dados.position}`],
-                    [`Data de Admissão: ${dados.admission}`],
-                    [`Setor: ${dados.sector}`],
-                    [`Salário: ${dados.salary}`]
+					[{text:`Nome: ${dados.name}`, borderColor: ['#388cc8', '#388cc8', '#388cc8', '#388cc8']}]
+				]
+			}
+		},
+        {   
+            margin: [0,10,0,0],
+			style: 'tableExample',
+			table: {
+                widths: [400],
+                align: 'center',
+                heights: [20],
+				body: [
+					[{text: `Sexo: ${dados.genre}`, borderColor: ['#388cc8', '#388cc8', '#388cc8', '#388cc8']} ]
+				]
+			}
+		},
+        {   
+            margin: [0,10,0,0],
+			style: 'tableExample',
+			table: {
+                widths: [400],
+                align: 'center',
+                heights: [20],
+				body: [
+					[{text: `Endereço: ${dados.address}`, borderColor: ['#388cc8', '#388cc8', '#388cc8', '#388cc8']}]
+				]
+			}
+		},
+        {   
+            margin: [0,10,0,0],
+			style: 'tableExample',
+			table: {
+                widths: [400],
+                align: 'center',
+                heights: [20],
+				body: [
+					[{text: `Telefone: ${dados.phone}`, borderColor: ['#388cc8', '#388cc8', '#388cc8', '#388cc8']}]
+				]
+			}
+		},
+        {   
+            margin: [0,10,0,0],
+			style: 'tableExample',
+			table: {
+                widths: [400],
+                align: 'center',
+                heights: [20],
+				body: [
+					[{text: `Data de Nascimento: ${dados.birthdayDate}`, borderColor: ['#388cc8', '#388cc8', '#388cc8', '#388cc8']}]
+				]
+			}
+		},
+        {   
+            margin: [0,10,0,0],
+			style: 'tableExample',
+			table: {
+                widths: [400],
+                align: 'center',
+                heights: [20],
+				body: [
+					[{text: `Cargo: ${dados.position}`, borderColor: ['#388cc8', '#388cc8', '#388cc8', '#388cc8']}]
+				]
+			}
+		},
+        {   
+            margin: [0,10,0,0],
+			style: 'tableExample',
+			table: {
+                widths: [400],
+                align: 'center',
+                heights: [20],
+				body: [
+					[{text:`Data de Admissão: ${dados.admission}`, borderColor: ['#388cc8', '#388cc8', '#388cc8', '#388cc8']}],
+				]
+			}
+		},
+        {   
+            margin: [0,10,0,0],
+			style: 'tableExample',
+			table: {
+                widths: [400],
+                align: 'center',
+                heights: [20],
+				body: [
+					[{text: `Setor: ${dados.sector}`, borderColor: ['#388cc8', '#388cc8', '#388cc8', '#388cc8']}],
+				]
+			}
+		},
+        {   
+            margin: [0,10,0,0],
+			style: 'tableExample',
+			table: {
+                widths: [400],
+                align: 'center',
+                heights: [20],
+				body: [
+					[{text: `Salário: ${dados.salary}`, borderColor: ['#388cc8', '#388cc8', '#388cc8', '#388cc8']}],
 				]
 			}
 		}

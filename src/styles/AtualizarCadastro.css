@@ -1,0 +1,48 @@
+.container-margins{
+    padding: 70px
+}
+
+#backgroundDiv {
+    height: 700px;
+    background-color: #f7f8f9;
+    padding: 40px;
+}
+
+#backgroundPaper {
+    background: white;
+    height: 100%;
+    padding: 20px;
+}
+#backgroundPaper h1 {
+    font-size: 20px;
+    margin-left: 20px;
+    color: #388cc8;
+    font-weight: 700;
+}
+
+.div1-margins {
+    padding-top: 200px;
+}
+
+#backgroundPaper input {
+    margin-left: 18px;
+    background-color: #fff;
+    border: #388cc8 2px solid;
+    border-radius: 0;
+    margin-top: 10px;
+    min-width: 350px;
+    height: 20px;
+    font-size: 12px;
+
+}
+
+@media (max-width: 1024px) {
+    #backgroundDiv { display: none;}
+    .imgPerfil {
+        margin-bottom: 15px;
+        margin-top: 70px;
+    }
+    .div1-margins {
+        padding-top: 400px;
+    }
+}
