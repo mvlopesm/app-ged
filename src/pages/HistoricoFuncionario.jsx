@@ -13,7 +13,7 @@ import  firebase from '../firebase.config'
 import 'firebase/firestore'
 
 //Importações Components
-import allEmployeedPDF from '../Reports/todosFuncionarios'
+import employeeHistoric from '../Reports/HistoricoFuncionario'
 
 const HistoricoFuncionario = () => {
 
@@ -57,8 +57,7 @@ const HistoricoFuncionario = () => {
             <h1 className="mb-5 mt-5">Histórico do Funcionário</h1>
             <div className='col-6 mb-3'>
                 <Link to={'/atualizarCadastro/' + id}className='btn btn-color btn-space mb-2'><AiOutlineArrowLeft className='icon-size'/> Voltar para Funcionário</Link>
-                <Link></Link>
-                <button onClick={() => allEmployeedPDF(funcionarios)} className="btn btn-danger mb-2" type="button" id="button-addon2"><AiTwotoneFilePdf className='icon-size btn-space'/> Gerar PDF</button>
+                <button onClick={() => employeeHistoric(funcionario)} className="btn btn-danger mb-2" type="button" id="button-addon2"><AiTwotoneFilePdf className='icon-size btn-space'/> Gerar PDF</button>
             </div>
             <div>
 
@@ -67,8 +66,8 @@ const HistoricoFuncionario = () => {
                     <tr className="rowTitle">
                     <th scope="col">Nome</th>
                     <th scope="col">Telefone</th>
-                    <th scope="col">Setor</th>
                     <th scope="col">Cargo</th>
+                    <th scope="col">Setor</th>
                     <th scope="col" className="col-action">Salário</th>
                     </tr>
                 </thead>
@@ -80,8 +79,8 @@ const HistoricoFuncionario = () => {
                                 <tr key={funcionario.id}>
                                     <td>{funcionario.name}</td>
                                     <td>{funcionario.phone}</td>
-                                    <td>{funcionario.sector}</td>
                                     <td>{funcionario.position}</td>
+                                    <td>{funcionario.sector}</td>
                                     <td>{funcionario.salary}</td>
                                 </tr>
                             )
