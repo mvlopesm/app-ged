@@ -36,6 +36,17 @@
 
 }
 
+#button-historico{
+    border-radius: 20px;
+    background: #388cc8;
+    border-color: #388cc8;
+    font-weight: 600;
+}
+
+#button-historico:hover{
+    color: #124670;
+}
+
 @media (max-width: 1024px) {
     #backgroundDiv { display: none;}
     .imgPerfil {

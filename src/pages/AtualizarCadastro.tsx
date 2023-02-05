@@ -12,6 +12,7 @@ import '../styles/AtualizarCadastro.css'
 import 'firebase/firestore'
 import firebase from "../firebase.config";
 import { AiTwotoneFilePdf } from "react-icons/ai";
+import { RiFolderHistoryLine } from "react-icons/ri";
 
 import employeeById from '../Reports/funcionarioPorId'
 
@@ -321,9 +322,9 @@ const AtualizarCadastro = (props) => {
 
                         {screen === 1? <button className= "btn btn-lg col-lg-4 col-12" onClick={handleSubmit}>Atualizar</button> : <div></div>}   
 
-                        <button onClick={() => employeeById(employeeInformation)} className="btn btn-danger" type="button" id="button-addon2"><AiTwotoneFilePdf className='icon-size'/> Gerar PDF</button>
-
-                        <button className="btn btn-danger mb-5" type="button" id="button-addon2"><AiTwotoneFilePdf className='icon-size'/> Histórico Funcionário</button>
+                        <button onClick={() => employeeById(employeeInformation)} className="btn btn-danger mb-3" type="button" id="button-addon2"><AiTwotoneFilePdf className='icon-size'/> Gerar PDF</button>
+                        
+                        <Link className="btn btn-danger mb-5"  id='button-historico' to={'/historico/' + id}> <RiFolderHistoryLine className='icon-size'/> Histórico do Funcionário</Link>
 
                     </div>
 

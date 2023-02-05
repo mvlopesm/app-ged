@@ -15,6 +15,7 @@ import AtualizarCadastro from './pages/AtualizarCadastro';
 import CadastrarFuncionario from './pages/CadastrarFuncionario';
 import RecuperarSenha from './pages/RecuperarSenha';
 import CriarConta from './pages/CriarConta';
+import HistoricoFuncionario from './pages/HistoricoFuncionario'
 
 
 const App = () => {
@@ -39,8 +40,9 @@ const App = () => {
           <Route path='/login/criarConta' element={<CriarConta />}/>
            
           <Route path='/' element={<Private><Home /></Private>}/>
-          <Route path='/atualizarCadastro/:id' element={<Private><AtualizarCadastro /></Private>}/>
           <Route path='/cadastrarFuncionario' element={<Private><CadastrarFuncionario /></Private>}/>
+          <Route path='/atualizarCadastro/:id' element={<Private><AtualizarCadastro /></Private>}/>
+          <Route path='/historico/:id' element={<Private><HistoricoFuncionario /></Private>}/>
       </Routes>
     </BrowserRouter>
   )
