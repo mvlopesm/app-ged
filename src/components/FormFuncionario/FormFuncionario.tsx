@@ -106,106 +106,127 @@ const FormFuncionario = (props) => {
 
     //Forms MultiStep
     return (
-        <div className="form">
-            
-            {screen === 0 && (
-                <>
-                    <h2>Informações de Contato</h2>
-                    <div className="row marginDiv">
-                        <div className="content col-lg-8">
-                            <label htmlFor = "name">Nome</label>
-                            <input value = {name}
-                            onChange={(e)=> {setName(e.target.value)}} type="text" placeholder="Nome" id="name" name="name"/>
-                            <p>ex: João José</p>
-                            
-
-                            <label htmlFor = "genre">Gênero</label>
-                            <select>
-                                <option selected>Gênero</option>
-                                <option value="1">Masculino</option>
-                                <option value="2">Feminino</option>
-                                <option value="3">Prefiro não responder</option>
-                            </select>
-                        </div>
-                        
-                        <div className="imgPerfil col-4 row" >
-                            
-                            <label id="showLabel" htmlFor = "photo">
-                                {!imgURL && <img src= {imgProfile} alt="" id="imgPerfilCadastrar"/>}
-                                {imgURL && <img src={imgURL} id="imgPerfilUploaded"/> }
-                                <input className="col-2 fileButton" type="file" name="photo" id="photo" onChange={imgHandler}/>
-                            </label>
-                        </div>
-                    </div>
-
-                    <label className="mt-4" htmlFor="address">Endereço</label>
-                    <input value = {address}
-                    onChange={(e)=> {setAddress(e.target.value)}} type="text" placeholder="Endereço" id="address" name="address"/>
-                    <p>ex: Rua do Brasil, 999</p>
-
-                    <div>
-                        <div className="row">
-                            <div className="content col-lg-6">
-                                <label htmlFor = "phone">Telefone</label>
-                                <input value = {phone} 
-                                onChange={(e)=> {setPhone(e.target.value)}}
-                                type="number" placeholder="Telefone" id="phone" name="phone"/>
+        <div>
+            <div className="row container-margins">
+                <div id="alignForm" className="div1-margins form content col-lg-6  ">
+                    {screen === 0 && (
+                        <>
+                            <h2>Informações de Contato</h2>
+                            <div className="row marginDiv">
+                                <div className="content col-lg-8">
+                                    <label htmlFor = "name">Nome</label>
+                                    <input value = {name}
+                                    onChange={(e)=> {setName(e.target.value)}} type="text" placeholder="Nome" id="name" name="name"/>
+                                    <p>ex: João José</p>
                                     
-                                <p>ex: 00000000000</p>
+
+                                    <label htmlFor = "genre">Gênero</label>
+                                    <label htmlFor = "genre">Nome</label>
+                                    <input value = {genre}
+                                    onChange={(e)=> {setGenre(e.target.value)}} type="text" placeholder="Gênero" id="genre" name="genre"/>
+                                    <p>ex: Masculino</p>
+                                </div>
+                                
+                                <div className="imgPerfil col-4 row" >
+                                    
+                                    <label id="showLabel" htmlFor = "photo">
+                                        {!imgURL && <img src= {imgProfile} alt="" id="imgPerfilCadastrar"/>}
+                                        {imgURL && <img src={imgURL} id="imgPerfilUploaded"/> }
+                                        <input className="col-2 fileButton" type="file" name="photo" id="photo" onChange={imgHandler}/>
+                                    </label>
+                                </div>
                             </div>
-                            
-                            <div className="content col-lg-6">
-                              <label htmlFor = "birthdayDate">Data de aniversário</label>
-                              <input value = {birthdayDate} 
-                              onChange={(e)=> {setBirthdayDate(e.target.value)}} type="text" placeholder="Data de aniversário" onFocus={(e) => e.target.type = 'date'} onBlur={(e) => e.target.type = 'text'} id="birthdayDate" name="birthdayDate"/>
-                             <p className="cl-lg-6">ex: 10/01/1980</p>
-                            </div>                            
+
+                            <label htmlFor="address">Endereço</label>
+                            <input value = {address}
+                            onChange={(e)=> {setAddress(e.target.value)}} type="text" placeholder="Endereço" id="address" name="address"/>
+                            <p>ex: Rua do Brasil, 999</p>
+
+                            <div>
+                                <div className="row">
+                                    <div className="content col-lg-6">
+                                        <label htmlFor = "phone">Telefone</label>
+                                        <input value = {phone} 
+                                        onChange={(e)=> {setPhone(e.target.value)}}
+                                        type="number" placeholder="Telefone" id="phone" name="phone"/>
+                                            
+                                        <p>ex: 00000000000</p>
+                                    </div>
+                                    
+                                    <div className="content col-lg-6">
+                                    <label htmlFor = "birthdayDate">Data de aniversário</label>
+                                    <input value = {birthdayDate} 
+                                    onChange={(e)=> {setBirthdayDate(e.target.value)}} type="text" placeholder="Data de aniversário" onFocus={(e) => e.target.type = 'date'} onBlur={(e) => e.target.type = 'text'} id="birthdayDate" name="birthdayDate"/>
+                                    <p className="cl-lg-6">ex: 10/01/1980</p>
+                                    </div>                            
+                                </div>
+                            </div>
+                        </>
+                    )}
+                    {screen === 1 && (
+                        <>  
+                            <div className="form-employee">
+                                <h2>Informações do Funcionário</h2>
+                                <label htmlFor = "position">Cargo</label>
+                                <input value = {position}
+                                onChange={(e)=> {setPosition(e.target.value)}}  type="text" placeholder="Cargo" id="position" name="position"/>
+                                <p>ex: Gerente</p>
+
+                                <label htmlFor = "admission">Data de adimissão</label>
+                                <input value = {admission}
+                                onChange={(e)=> {setAdmission(e.target.value)}} type="text" onFocus={(e) => e.target.type = 'date'} onBlur={(e) => e.target.type = 'text'} placeholder="Data de admissão" id="admission" name="admission"/>
+                                <p>ex: 10/01/1980</p>
+
+
+                                <label htmlFor = "sector">Setor</label>
+                                <input value = {sector} 
+                                onChange={(e)=> {setSector(e.target.value)}} type="text" placeholder="Setor" id="sector" name="sector"/>
+                                <p>ex: Vendas</p>
+
+                                <label htmlFor = "salary">Salário</label>
+                                <input value = {salary}
+                                onChange={(e)=> {setSalary(e.target.value)}}  type="number" placeholder="Salário" id="salary" name="salary"/>
+                                <p>ex: 3500,00</p>
+                            </div>
+                        </>
+                    )}
+                    
+                    <div className="buttons row">
+                        {screen === 0 ? <div className="buttons"> 
+                            <Link to = '/'><button className= "btn btn-lg col-lg-4 col-12 cancel-button">Cancelar</button></Link>
+                            <button className= "btn btn-lg col-lg-4 col-12" onClick={handleNavigateToContatoNext}>Próxima</button></div>
+                            : <button onClick={handleNavigateToContatoPrevius} className= "btn btn-lg col-lg-4" >Anterior</button>
+                        }
+
+                        {screen === 1? <button className= "btn btn-lg col-lg-4" type="submit" onSubmit={imgHandler} onClick={handleSubmit}>{props.textButton}</button> : <div></div>}   
+                    </div>
+
+                    { message.length > 0 ? <div className="alert alert-danger mt-3" role="alert">{message}</div> : null}
+
+                    {success==='S' ? <Navigate to='/'/> : null}
+                </div>
+                    
+                <div className="col-lg-6" id="backgroundDiv" >
+                    <div id="backgroundPaper">
+                        <h1 className="mb-4">Informações do Funcionário</h1>
+                        <input type="text" className="row" value={`Nome: ${name}`} disabled/>
+                        <input type="text" className="row" value={`Sexo: ${genre}`} disabled/>
+                        <div id="imgPerfilDivPDF col-lg-4">
+                                    <label htmlFor = "photo">Foto de Perfil</label>
+                                    {!imgURL && <img id="imgPerfilDivPDF" src= {imgProfile} alt=""/>}
+                                    {imgURL && <img src={imgURL} id="imgPerfilDivPDF"/> }
                         </div>
+                        <input type="text" className="row" value={`Endereço: ${address}`} disabled/>
+                        <input type="text" className="row" value={`Telefone: ${phone}`} disabled/>
+                        <input type="text" className="row" value={`Data de Nascimento: ${birthdayDate}`} disabled/>
+                        <input type="text" className="row" value={`Cargo: ${position}`} disabled/>
+                        <input type="text" className="row" value={`Data de admissão: ${admission}`} disabled/>
+                        <input type="text" className="row" value={`Setor: ${sector}`} disabled/>
+                        <input type="text" className="row" value={`Salário: ${salary}`} disabled/>
                     </div>
-                </>
-            )}
-            {screen === 1 && (
-                <>  
-                    <div className="form-employee">
-                        <h2>Informações do Funcionário</h2>
-                        <label htmlFor = "position">Cargo</label>
-                        <input value = {position}
-                        onChange={(e)=> {setPosition(e.target.value)}}  type="text" placeholder="Cargo" id="position" name="position"/>
-                        <p>ex: Gerente</p>
-
-                        <label htmlFor = "admission">Data de adimissão</label>
-                        <input value = {admission}
-                        onChange={(e)=> {setAdmission(e.target.value)}} type="text" onFocus={(e) => e.target.type = 'date'} onBlur={(e) => e.target.type = 'text'} placeholder="Data de admissão" id="admission" name="admission"/>
-                        <p>ex: 10/01/1980</p>
-
-
-                        <label htmlFor = "sector">Setor</label>
-                        <input value = {sector} 
-                        onChange={(e)=> {setSector(e.target.value)}} type="text" placeholder="Setor" id="sector" name="sector"/>
-                        <p>ex: Vendas</p>
-
-                        <label htmlFor = "salary">Salário</label>
-                        <input value = {salary}
-                        onChange={(e)=> {setSalary(e.target.value)}}  type="number" placeholder="Salário" id="salary" name="salary"/>
-                        <p>ex: 3500,00</p>
-                    </div>
-                </>
-            )}
-            
-            <div className="buttons row">
-                {screen === 0 ? <div className="buttons"> 
-                    <Link to = '/'><button className= "btn btn-lg col-lg-4 col-12 cancel-button">Cancelar</button></Link>
-                    <button className= "btn btn-lg col-lg-4 col-12" onClick={handleNavigateToContatoNext}>Próxima</button></div>
-                    : <button onClick={handleNavigateToContatoPrevius} className= "btn btn-lg col-lg-4" >Anterior</button>
-                }
-
-                {screen === 1? <button className= "btn btn-lg col-lg-4" type="submit" onSubmit={imgHandler} onClick={handleSubmit}>{props.textButton}</button> : <div></div>}   
+                </div>
+                
             </div>
-
-            { message.length > 0 ? <div className="alert alert-danger mt-3" role="alert">{message}</div> : null}
-
-            {success==='S' ? <Navigate to='/'/> : null}
-
         </div>
     )
 }

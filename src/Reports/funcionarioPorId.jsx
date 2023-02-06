@@ -31,13 +31,13 @@ async function employeeById(employeeInformation){
         // return canvas.toDataURL("image/png", 0.9);
       };
 
-    //   const teste = async() => {
-    //     var dataUrl = await imageToDataURL(`${dados.imgURL}`);
-    //     return dataUrl
-    //   }
+      const teste = async() => {
+        var dataUrl = await imageToDataURL(`${dados.imgURL}`);
+        return dataUrl
+      }
       
-    //   const newURL = await teste();
-    //   console.log(newURL)
+      const newURL = await teste();
+      console.log(newURL)
 
     const reportTitle = [
         {
@@ -74,6 +74,12 @@ async function employeeById(employeeInformation){
 				]
 			}
 		},
+        {   
+            margin: [0,10,0,0],
+            image: `${newURL}`,
+            width: 150,
+			height: 150,
+        },
         {   
             margin: [0,10,0,0],
 			style: 'tableExample',

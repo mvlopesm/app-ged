@@ -1,4 +1,7 @@
 /* Style Form*/
+#alignForm {
+    margin-top: -40px;
+}
 .form {
     display: flex;
     flex-direction: column;
@@ -58,19 +61,6 @@ input {
     height: 45px;
 }
 
-select {
-    padding: 10px;
-    background-color:#e4e6e7;
-    color: #7c7c7c;
-    border: gray;
-    border-radius: 10px;
-    font-size: 17px;
-    height: 45px;
-  }
-  
-  option[value=""][disabled] {
-    display: none;
-  }
 
 .content {
     display: flex;
@@ -91,10 +81,6 @@ select {
 
 #imgPerfilUploaded {
     margin-top: -10px;
-}
-
-.marginDiv {
-    margin-bottom: 10px;
 }
 
 /*CSS Buttons*/
@@ -129,19 +115,35 @@ select {
     width: 20px;
  }
 
- @media (max-width: 1024px) {
+ @media (max-width: 1150px) {
     #backgroundDiv { display: none;}
-    #imgPerfilCadastrar {
+    .imgPerfil {
         margin-bottom: 15px;
-        margin-top: 0px;
+        margin-left: -30px;
+        margin-top: 40px;
     }
-    .div1-margins {
-        padding-top: 400px;
+    #showLabel {
+        margin-top: -40px;
     }
 
-    .marginDiv {
-        margin-bottom: 80px
+    .form-employee{
+        margin-top: -400px;
     }
 }
 
+@media (max-width: 990px) {
+    #backgroundDiv { display: none;}
+    .imgPerfil {
+        margin-top: 50px;
+        margin-left: -10px;
+    }
+    #showLabel {
+        margin-top: -40px;
+    }
+
+    .marginDiv{
+        margin-bottom: 110px;
+    }
+
+}
 

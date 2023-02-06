@@ -236,7 +236,7 @@ const AtualizarCadastro = (props) => {
         <div>
             <Header/>
             <div className="row container-margins">
-                <div className="div1-margins form content col-lg-6  ">
+                <div id="formAlign" className="div1-margins form content col-lg-6">
                     {screen === 0 && (
                         <>
                             
@@ -256,14 +256,14 @@ const AtualizarCadastro = (props) => {
                                 
                                 <div className="imgPerfil col-lg-4">
                                     <label htmlFor = "photo">Foto de Perfil</label>
-                                    {!imgURL && <img src= {imgProfile} alt=""/>}
-                                    {imgURL && <img src={imgURL} className='imgPerfil'/> }
+                                    {!imgURL && <img src= {imgProfile} id='alignFoto990' className = 'imgPerfilAtualizar' alt=""/>}
+                                    {imgURL && <img src={imgURL} id='alignFotoPerfil990' className='imgPerfilAtualizar'/> }
                                 </div>
                             </div>
 
-                            <label htmlFor = "address">Endereço</label>
+                            <label  htmlFor = "address">Endereço</label>
                             <input value = {address}
-                            onChange={(e)=> {newSetAddress(e)}} type="text" placeholder="Endereço" id="address" name="address"/>
+                            onChange={(e)=> {newSetAddress(e)}} className="addressMedia" type="text" placeholder="Endereço" id="address" name="address"/>
                             <p>ex: Rua do Brasil, 999</p>
 
                             <div>
@@ -326,7 +326,7 @@ const AtualizarCadastro = (props) => {
 
                         {screen === 1? <button className= "btn btn-lg col-lg-4 col-12" onClick={handleSubmit}>Atualizar</button> : <div></div>}   
 
-                        <button onClick={() => employeeById(employeeInformation)} className="btn btn-danger mb-3" type="button" id="button-addon2"><AiTwotoneFilePdf className='icon-size'/> Gerar PDF</button>
+                        <button onClick={() => employeeById(employeeInformation)} className="btn btn-danger mt-3 mb-3" type="button" id="button-addon2"><AiTwotoneFilePdf className='icon-size'/> Gerar PDF</button>
                         
                         <Link className="btn btn-danger mb-5"  id='button-historico' to={'/historico/' + id}> <RiFolderHistoryLine className='icon-size'/> Histórico do Funcionário</Link>
 
@@ -342,6 +342,11 @@ const AtualizarCadastro = (props) => {
                         <h1 className="mb-4">Informações do Funcionário</h1>
                         <input type="text" className="row" value={`Nome: ${name}`} disabled/>
                         <input type="text" className="row" value={`Sexo: ${genre}`} disabled/>
+                        <div id="imgPerfilDivPDF col-lg-4">
+                                    <label htmlFor = "photo">Foto de Perfil</label>
+                                    {!imgURL && <img id="imgPerfilDivPDF" src= {imgProfile} alt=""/>}
+                                    {imgURL && <img src={imgURL} id="imgPerfilDivPDF"/> }
+                        </div>
                         <input type="text" className="row" value={`Endereço: ${address}`} disabled/>
                         <input type="text" className="row" value={`Telefone: ${phone}`} disabled/>
                         <input type="text" className="row" value={`Data de Nascimento: ${birthdayDate}`} disabled/>

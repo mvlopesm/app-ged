@@ -1,5 +1,5 @@
 .container-margins{
-    padding: 70px
+    padding: 70px;
 }
 
 #backgroundDiv {
@@ -24,6 +24,16 @@
     padding-top: 200px;
 }
 
+.imgPerfilAtualizar {
+    margin-left: -7px;
+}
+
+#imgPerfilDivPDF {
+    height: 100px;
+    width: 100px;
+    margin-left: 18px;
+}
+
 #backgroundPaper input {
     margin-left: 18px;
     background-color: #fff;
@@ -45,13 +55,15 @@
 
 #button-historico:hover{
     color: #124670;
+    background: #fff;
+    border-color: #fff;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1150px) {
     #backgroundDiv { display: none;}
-    .imgPerfil {
-        margin-bottom: 15px;
-        margin-top: 70px;
+    .imgPerfilAtualizar {
+        margin-bottom: 50px;
+        margin-left: 30px;
     }
     #showLabel {
         margin-top: -40px;
@@ -60,4 +72,32 @@
     .form-employee{
         margin-top: -250px;
     }
+}
+
+@media (max-width: 990px) {
+    #backgroundDiv { display: none;}
+    #alignFotoPerfil990 {
+        margin-left: 10px;
+        margin-top: -50px;
+        margin-bottom: 10px;
+    }
+
+    #alignFoto990 {
+        margin-left: 10px;
+        margin-top: -50px;
+        margin-bottom: 10px;
+    }
+
+    #showLabel {
+        margin-top: -40px;
+    }
+
+    .form-employee{
+        margin-top: -250px;
+    }
+
+    #formAlign {
+        margin-top: 200px;
+    }
+
 }
