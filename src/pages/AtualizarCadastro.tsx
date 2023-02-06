@@ -72,8 +72,11 @@ const AtualizarCadastro = (props) => {
 
     // Funções para Atualização do PDF em tempo real
 
+
     const newSetAddress = (e) => {
+
         setAddress(e.target.value)
+        
         employeeInfo.push({
             name: name,
             genre : genre,
@@ -217,6 +220,7 @@ const AtualizarCadastro = (props) => {
                     admission: admission,
                     sector: sector,
                     salary: salary,
+                    date: new Date().toLocaleDateString()
                 }).then (() => {
                     console.log('Registrado no histórico')
                         setMessage('')
@@ -286,7 +290,7 @@ const AtualizarCadastro = (props) => {
 
                     {screen === 1 && (
                         <>  
-                            <div className="form-employee">
+                            <div id ='testeTeste'className="form-employee">
                                 <h2>Informações do Funcionário</h2>
                                 <label htmlFor = "position">Cargo</label>
                                 <input value = {position}

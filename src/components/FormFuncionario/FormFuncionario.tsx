@@ -6,7 +6,7 @@ import { Link, Navigate } from "react-router-dom";
 // @ts-ignore
 import imgProfile  from '../../assets/profile.png';
 import './FormFuncionario.css'
-import { BsFillArrowUpCircleFill } from 'react-icons/bs'
+import { IoIosAddCircleOutline } from 'react-icons/io'
 
 //Importações Banco de Dados
 import 'firebase/firestore';
@@ -111,29 +111,34 @@ const FormFuncionario = (props) => {
             {screen === 0 && (
                 <>
                     <h2>Informações de Contato</h2>
-                    <div className="row" >
-                        <div className="content col-lg-7">
+                    <div className="row marginDiv">
+                        <div className="content col-lg-8">
                             <label htmlFor = "name">Nome</label>
                             <input value = {name}
                             onChange={(e)=> {setName(e.target.value)}} type="text" placeholder="Nome" id="name" name="name"/>
                             <p>ex: João José</p>
                             
 
-                            <label htmlFor = "genre">Sexo</label>
-                            <input value = {genre} 
-                            onChange={(e)=> {setGenre(e.target.value)}} type="text" placeholder="Sexo" id="genre" name="genre"/>
-                            <p>ex: Masculino</p>
+                            <label htmlFor = "genre">Gênero</label>
+                            <select>
+                                <option selected>Gênero</option>
+                                <option value="1">Masculino</option>
+                                <option value="2">Feminino</option>
+                                <option value="3">Prefiro não responder</option>
+                            </select>
                         </div>
                         
-                        <div className="imgPerfil col-lg-5 row" >
-                            {!imgURL && <img src= {imgProfile} alt="" id="imgPerfilCadastrar"/>}
-                            {imgURL && <img src={imgURL} id="imgPerfilUploaded"/> }
-                            <input className="col-2 fileButton" type="file" name="photo" id="photo" onChange={imgHandler}/>
-                            <label id="showLabel" htmlFor = "photo"><BsFillArrowUpCircleFill id="iconUploadPhoto" /></label>
+                        <div className="imgPerfil col-4 row" >
+                            
+                            <label id="showLabel" htmlFor = "photo">
+                                {!imgURL && <img src= {imgProfile} alt="" id="imgPerfilCadastrar"/>}
+                                {imgURL && <img src={imgURL} id="imgPerfilUploaded"/> }
+                                <input className="col-2 fileButton" type="file" name="photo" id="photo" onChange={imgHandler}/>
+                            </label>
                         </div>
                     </div>
 
-                    <label htmlFor = "address">Endereço</label>
+                    <label className="mt-4" htmlFor="address">Endereço</label>
                     <input value = {address}
                     onChange={(e)=> {setAddress(e.target.value)}} type="text" placeholder="Endereço" id="address" name="address"/>
                     <p>ex: Rua do Brasil, 999</p>
@@ -144,9 +149,9 @@ const FormFuncionario = (props) => {
                                 <label htmlFor = "phone">Telefone</label>
                                 <input value = {phone} 
                                 onChange={(e)=> {setPhone(e.target.value)}}
-                                type="text" placeholder="Telefone" id="phone" name="phone"/>
+                                type="number" placeholder="Telefone" id="phone" name="phone"/>
                                     
-                                <p>ex: (00) 0 0000-0000</p>
+                                <p>ex: 00000000000</p>
                             </div>
                             
                             <div className="content col-lg-6">
@@ -182,15 +187,15 @@ const FormFuncionario = (props) => {
                         <label htmlFor = "salary">Salário</label>
                         <input value = {salary}
                         onChange={(e)=> {setSalary(e.target.value)}}  type="number" placeholder="Salário" id="salary" name="salary"/>
-                        <p>ex: 3.500,00</p>
+                        <p>ex: 3500,00</p>
                     </div>
                 </>
             )}
             
             <div className="buttons row">
                 {screen === 0 ? <div className="buttons"> 
-                    <Link to = '/'><button className= "btn btn-lg col-lg-4 cancel-button">Cancelar</button></Link>
-                    <button className= "btn btn-lg col-lg-4" onClick={handleNavigateToContatoNext}>Próxima</button></div>
+                    <Link to = '/'><button className= "btn btn-lg col-lg-4 col-12 cancel-button">Cancelar</button></Link>
+                    <button className= "btn btn-lg col-lg-4 col-12" onClick={handleNavigateToContatoNext}>Próxima</button></div>
                     : <button onClick={handleNavigateToContatoPrevius} className= "btn btn-lg col-lg-4" >Anterior</button>
                 }
 

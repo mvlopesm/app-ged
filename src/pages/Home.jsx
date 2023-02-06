@@ -70,12 +70,12 @@ const Home = () => {
 
                 <div className='row'>
                     <div className='col-6'>
-                        <Link to='/cadastrarFuncionario'className='btn btn-color btn-space'><AiOutlineUserAdd className='icon-size'/> Cadastrar Funcionário</Link>
-                        <button onClick={() => allEmployeedPDF(funcionarios)} className="btn btn-danger" type="button" id="button-addon2"><AiTwotoneFilePdf className='icon-size'/> Gerar PDF</button>
+                        <Link to='/cadastrarFuncionario'className='btn btn-color btn-space mb-2'><AiOutlineUserAdd className='icon-size'/> Cadastrar Funcionário</Link>
+                        <button onClick={() => allEmployeedPDF(funcionarios)} className="btn btn-danger mb-2" type="button" id="button-addon2"><AiTwotoneFilePdf className='icon-size'/> Gerar PDF</button>
                     </div>
                     <div className='col-6'>
                         <div className="input-group mb-3">
-                            <input onChange={(e)=> {setSearch(e.target.value)}} type="text" className="form-control" placeholder="Pesquisar Funcionário" aria-describedby="button-addon2"/>
+                            <input onChange={(e)=> {setSearch(e.target.value)}} type="text" className="form-control" placeholder="Pesquisar" aria-describedby="button-addon2"/>
                             <button className="btn btn-color" type="button" id="button-addon2"><AiOutlineSearch className='icon-size'/> Pesquisar</button>
                         </div>
                     </div>

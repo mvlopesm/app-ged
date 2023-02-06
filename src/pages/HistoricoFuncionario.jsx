@@ -33,6 +33,7 @@ const HistoricoFuncionario = () => {
                         {
                             listaFunc.push({
                                 id: doc.id,
+                                date: doc.data().date,
                                 name: doc.data().name,
                                 phone: doc.data().phone,
                                 sector: doc.data().sector,
@@ -64,11 +65,12 @@ const HistoricoFuncionario = () => {
             <table className="table table-hover table-bordered">
                 <thead>
                     <tr className="rowTitle">
+                    <th scope="col">Data</th>   
                     <th scope="col">Nome</th>
                     <th scope="col">Telefone</th>
                     <th scope="col">Cargo</th>
                     <th scope="col">Setor</th>
-                    <th scope="col" className="col-action">Salário</th>
+                    <th scope="col">Salário</th>
                     </tr>
                 </thead>
 
@@ -77,6 +79,7 @@ const HistoricoFuncionario = () => {
                         funcionario.map((funcionario) => {
                             return (
                                 <tr key={funcionario.id}>
+                                    <td>{funcionario.date}</td>
                                     <td>{funcionario.name}</td>
                                     <td>{funcionario.phone}</td>
                                     <td>{funcionario.position}</td>

@@ -26,24 +26,9 @@
 }
 
 /*Styel Button*/
-.home-button {
-    width: 100px;
-    height: 30px;
-    color: #b5babd;
-    align-self: center;
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-.home-button ::before {
-    content: '';
-    position: absolute;
-    top: 0px;
-    right: 50px;
-    width: 140px;
-    height: 2px;
-    background: #e7ebee;
-    transform: rotate(90deg);
+.menu-button {
+    margin-left: 30px;
+    right: 0;
 }
 
 /*Style navbar*/
@@ -67,3 +52,24 @@
     background: #e7ebee;
 }
 
+.container-fluid {
+    display: flex;
+}
+
+@media (max-width: 1024px) {
+    .menu-button {
+        margin-left: 70vw
+    }
+}
+
+@media (max-width: 750px) {
+    .menu-button {
+        margin-left: 60vw
+    }
+}
+
+@media (max-width: 550px) {
+    .menu-button {
+        margin-left: 50vw
+    }
+}

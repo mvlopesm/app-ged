@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 //Importações Estilização
 // @ts-ignore
 import imgMarcaTaugor from '../../assets/marca-taugor.png'
-import { AiFillHome } from "react-icons/ai";
+import { AiOutlineMenu } from "react-icons/ai";
 import './Header.css'
 
 //Importações Banco de Dados
@@ -22,23 +22,23 @@ const Header = () => {
     }
 
     return (
-        <nav className="navbar navbar-expand-lg">
+        <nav className="navbar navbar-expand-lg bg-body-tertiary">
             <div className="container-fluid">
-                <div className="logo">
+                <div className="logo navbar-brand">
                     <Link to='/'>
-                        <img src={imgMarcaTaugor} alt="" />
+                        <img src={imgMarcaTaugor} alt="" className="testeTeste"/>
                     </Link>
+                    <button className="navbar-toggler menu-button" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
+                    </button>
                 </div>
 
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav">
-                        <li className="nav-item item-navigation nav-link active"><Link to = '/cadastrarFuncionario'>Cadastrar Funcionário</Link> </li>
-                        <li className="nav-item item-navigation nav-link active"><a className="logout" onClick={Logout}>Sair</a></li>
+                        <li className="nav-item item-navigation mb-2 mt-2"> <Link className="active" to = '/' >Home</Link></li>
+                        <li className="nav-item item-navigation mb-2 mt-2"><Link className="active" to = '/cadastrarFuncionario'>Cadastrar Funcionário</Link> </li>
+                        <li className="nav-item item-navigation mb-2 mt-2"><a className="logout active" onClick={Logout}>Sair</a></li>
                     </ul>
-                </div>
-                
-                <div className="home-button">
-                    <Link to = '/'><AiFillHome className="home-icon" /></Link>
                 </div>
             </div>
       </nav>

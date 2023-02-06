@@ -1,6 +1,6 @@
 import pdfMake from 'pdfmake/build/pdfmake'
 
-function employeeById(employeeInformation){
+async function employeeById(employeeInformation){
 
     pdfMake.fonts = {
         Roboto: {
@@ -12,6 +12,32 @@ function employeeById(employeeInformation){
     }
 
     const dados = employeeInformation[0]
+    var imgURL = dados.imageURL    
+
+
+    async function imageToDataURL(imgURL) {
+        let img = await fetch(`${imgURL}`);
+        // @ts-ignore
+        img = await img.blob();
+        // @ts-ignore
+        let bitmap = await createImageBitmap(img);
+        let canvas = document.createElement("canvas");
+        let ctx = canvas.getContext("2d");
+        canvas.width = bitmap.width;
+        canvas.height = bitmap.height;
+        ctx.drawImage(bitmap, 0, 0, bitmap.width, bitmap.height);
+        return canvas.toDataURL("image/png");
+        // image compression? 
+        // return canvas.toDataURL("image/png", 0.9);
+      };
+
+    //   const teste = async() => {
+    //     var dataUrl = await imageToDataURL(`${dados.imgURL}`);
+    //     return dataUrl
+    //   }
+      
+    //   const newURL = await teste();
+    //   console.log(newURL)
 
     const reportTitle = [
         {
