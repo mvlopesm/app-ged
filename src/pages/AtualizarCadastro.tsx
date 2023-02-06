@@ -220,7 +220,7 @@ const AtualizarCadastro = (props) => {
                     admission: admission,
                     sector: sector,
                     salary: salary,
-                    date: new Date().toLocaleDateString()
+                    date: new Date().toLocaleString()
                 }).then (() => {
                     console.log('Registrado no histórico')
                         setMessage('')

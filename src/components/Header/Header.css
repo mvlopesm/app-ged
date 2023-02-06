@@ -73,3 +73,15 @@
         margin-left: 50vw
     }
 }
+
+@media (max-width: 440px) {
+    .menu-button {
+        margin-left: 40vw
+    }
+}
+
+@media (max-width: 360px) {
+    .menu-button {
+        margin-left: 35vw
+    }
+}

@@ -6,7 +6,6 @@ import { Link, Navigate } from "react-router-dom";
 // @ts-ignore
 import imgProfile  from '../../assets/profile.png';
 import './FormFuncionario.css'
-import { IoIosAddCircleOutline } from 'react-icons/io'
 
 //Importações Banco de Dados
 import 'firebase/firestore';
@@ -81,6 +80,8 @@ const FormFuncionario = (props) => {
             sector.length === 0 ||
             salary.length === 0) {
             setMessage('Informe todos os dados')
+        } else if(imgURL.length === 0) {
+            setMessage('Anexe uma foto do funcionário')
         } else {
             db.collection('funcionarios').add({
                 name: name,

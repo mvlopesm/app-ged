@@ -7,3 +7,6 @@
     margin-right: 15px;
 }
 
+@media (max-width: 550px) {
+    #displaySearch { display: none;}
+}
