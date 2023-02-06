@@ -59,6 +59,8 @@
     border-color: #fff;
 }
 
+/*Medias css*/
+
 @media (max-width: 1150px) {
     #backgroundDiv { display: none;}
     .imgPerfilAtualizar {
