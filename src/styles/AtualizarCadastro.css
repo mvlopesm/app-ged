@@ -59,7 +59,7 @@
     border-color: #fff;
 }
 
-/*Medias css*/
+/*Medias CSS*/
 
 @media (max-width: 1150px) {
     #backgroundDiv { display: none;}

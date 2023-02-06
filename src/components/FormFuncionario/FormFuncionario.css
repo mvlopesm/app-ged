@@ -115,6 +115,8 @@ input {
     width: 20px;
  }
 
+ /*Medias CSS*/
+
  @media (max-width: 1150px) {
     #backgroundDiv { display: none;}
     .imgPerfil {
